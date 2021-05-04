@@ -17,7 +17,7 @@ services:
       - POSTGRES_HOST=postgres
       - REDIS_DB=0
       - REDIS_HOST=redis
-    restart: always
+    restart: 'no'
     volumes:
       - .:/app:delegated # enable hot code reload in debug mode
     depends_on:
@@ -43,7 +43,7 @@ services:
       - POSTGRES_HOST=postgres
       - REDIS_DB=0
       - REDIS_HOST=redis
-    restart: always
+    restart: 'no'
     volumes:
       - .:/app:delegated
     depends_on:
@@ -65,7 +65,7 @@ services:
       - POSTGRES_HOST=postgres
       - REDIS_DB=0
       - REDIS_HOST=redis
-    restart: always
+    restart: 'no'
     volumes:
       - .:/app:delegated
     depends_on:
@@ -76,6 +76,7 @@ services:
   postgres:
     image: postgres:11
     container_name: club_postgres
+    restart: 'no'
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -85,6 +86,7 @@ services:
 
   redis:
     image: redis:alpine
+    restart: 'no'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
@@ -93,7 +95,7 @@ services:
   webpack:
     image: node:14-slim
     command: npm run watch
-    restart: always
+    restart: 'no'
     volumes:
       - .:/app:delegated
     working_dir: /app/frontend
