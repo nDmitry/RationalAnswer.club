@@ -32,8 +32,8 @@ def network(request):
 def robots(request):
     lines = [
         "User-agent: *",
-        "Sitemap: https://vas3k.club/sitemap.xml",
-        "Host: https://vas3k.club",
+        "Sitemap: https://rationalanswer.ru/sitemap.xml",
+        "Host: https://rationalanswer.ru",
         "Disallow: /intro/"
         "Disallow: /user/"
         "Disallow: /people/"
@@ -69,7 +69,7 @@ def generate_ical_invite(request):
     cal.add_component(event)
 
     response = HttpResponse(cal.to_ical(), content_type="application/force-download")
-    response["Content-Disposition"] = "attachment; filename=ical_vas3k_club.ics"
+    response["Content-Disposition"] = "attachment; filename=ical_rationalanswer.ics"
     return response
 
 

@@ -11,11 +11,11 @@ services:
       - MODE=production
       - PYTHONUNBUFFERED=1
       - DEBUG=false
-      - APP_HOST=https://vas3k.club
-      - MEDIA_UPLOAD_URL=https://i.vas3k.club/upload/
-      - POSTGRES_DB=vas3k_club
-      - POSTGRES_USER=vas3k
-      - POSTGRES_PASSWORD=vas3k
+      - APP_HOST=https://rationalanswer.ru
+      - MEDIA_UPLOAD_URL=https://i.rationalanswer.ru/upload/
+      - POSTGRES_DB=rationalanswer
+      - POSTGRES_USER=ra
+      - POSTGRES_PASSWORD=ra
       - POSTGRES_HOST=postgres
       - REDIS_DB=0
       - REDIS_HOST=redis
@@ -55,11 +55,11 @@ services:
     container_name: club_postgres
     restart: always
     environment:
-      POSTGRES_USER: vas3k
-      POSTGRES_PASSWORD: vas3k
-      POSTGRES_DB: vas3k_club
+      POSTGRES_USER: ra
+      POSTGRES_PASSWORD: ra
+      POSTGRES_DB: rationalanswer
     volumes:
-      - /home/vas3k/pgdata:/var/lib/postgresql/data:rw
+      - /var/www/pgdata:/var/lib/postgresql/data:rw
     ports:
       - "127.0.0.1:54333:5432"
 

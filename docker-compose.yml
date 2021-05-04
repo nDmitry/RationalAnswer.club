@@ -11,7 +11,7 @@ services:
       - MODE=dev
       - DEBUG=true
       - PYTHONUNBUFFERED=1
-      - POSTGRES_DB=vas3k_club
+      - POSTGRES_DB=rationalanswer
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST=postgres
@@ -37,7 +37,7 @@ services:
       - MODE=dev
       - DEBUG=true
       - PYTHONUNBUFFERED=1
-      - POSTGRES_DB=vas3k_club
+      - POSTGRES_DB=rationalanswer
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST=postgres
@@ -59,7 +59,7 @@ services:
       - MODE=dev
       - DEBUG=true
       - PYTHONUNBUFFERED=1
-      - POSTGRES_DB=vas3k_club
+      - POSTGRES_DB=rationalanswer
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST=postgres
@@ -80,7 +80,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=vas3k_club
+      - POSTGRES_DB=rationalanswer
     ports:
       - "5432:5432"
 

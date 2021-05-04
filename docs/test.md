@@ -9,14 +9,14 @@ Consider next required conditions for running tests:
   Don't forget to run it under configured venv. Look [setup venv](#setup-venv) how to configure venv
 - **postgres**
 
-  Due to tests make database queries the local postgres should be running. 
-  
+  Due to tests make database queries the local postgres should be running.
+
   Run postgres:
   ```sh
   $ docker-compose -f docker-compose.yml up -d postgres
   ```
-  For first time run migrations (it needs only for fresh images) 
-  ```sh 
+  For first time run migrations (it needs only for fresh images)
+  ```sh
   (venv) $ ./manage.py migrate
   ```
 - **redis**
@@ -25,8 +25,8 @@ Consider next required conditions for running tests:
   $ docker-compose -f docker-compose.yml up -d redis
   ```
 - build **frontend**
-  
-  For [views tests](https://docs.djangoproject.com/en/3.1/intro/tutorial05/#a-test-for-a-view) its essential to build our frontend upfront. 
+
+  For [views tests](https://docs.djangoproject.com/en/3.1/intro/tutorial05/#a-test-for-a-view) its essential to build our frontend upfront.
   Hot to build front look [setup-frontend](#setup-frontend) section, for now just run next commands:
   ```sh
   $ cd frontend
@@ -39,7 +39,7 @@ Consider next required conditions for running tests:
   DJANGO_SETTINGS_MODULE=club.settings;
   PYTHONUNBUFFERED=1;
   TESTS_RUN=da
-  POSTGRES_DB=vas3k_club
+  POSTGRES_DB=rationalanswer
   POSTGRES_USER=postgres
   POSTGRES_PASSWORD=postgres
   POSTGRES_HOST=localhost

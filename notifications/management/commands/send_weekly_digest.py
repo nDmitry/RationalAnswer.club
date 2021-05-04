@@ -26,7 +26,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # render digest using a special html endpoint
-        digest_url = "https://vas3k.club" + reverse("render_weekly_digest")
+        digest_url = "https://rationalanswer.ru" + reverse("render_weekly_digest")
         self.stdout.write(f"Generating digest: {digest_url}")
 
         digest_html_response = requests.get(digest_url)
@@ -50,7 +50,7 @@ class Command(BaseCommand):
             slug=f"{year}_{week}",
             type=Post.TYPE_WEEKLY_DIGEST,
             defaults=dict(
-                author=User.objects.filter(slug="vas3k").first(),
+                author=User.objects.filter(slug="dima").first(),
                 title=f"Клубный журнал. Итоги недели. Выпуск #{issue}",
                 html=no_footer_digest_html,
                 text=no_footer_digest_html,
@@ -75,7 +75,7 @@ class Command(BaseCommand):
         for user in subscribed_users:
             self.stdout.write(f"Sending to {user.email}...")
 
-            if not options.get("production") and user.email != "me@vas3k.ru":
+            if not options.get("production") and user.email != "dima.nikitenko@gmail.com":
                 self.stdout.write("Test mode. Use --production to send the digest to all users")
                 continue
 

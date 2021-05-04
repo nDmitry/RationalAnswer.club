@@ -35,9 +35,9 @@ export default {
     data() {
         return {
             accessToken: "pk.eyJ1IjoidmFzM2siLCJhIjoiY2thZ254NXVwMDhkbjJ5dDk5eGh5Y21wbyJ9.wYXG58PrErQfRHTflvdSfA",
-            mapStyle: "mapbox://styles/vas3k/ckagmhzm90tkd1inu8pg76p9s/draft",
+            mapStyle: "mapbox://styles/ra/ckagmhzm90tkd1inu8pg76p9s/draft",
             coordinates: [18.3, 51.06],
-            defaultAvatar: "https://i.vas3k.club/v.png",
+            defaultAvatar: "https://i.rationalanswer.ru/v.png",
         };
     },
     created() {

@@ -32,7 +32,7 @@ Once you decided to code something in the project you'll need to setup your envi
   ```
   When you need to connect to postgres use next params:
   ```dotenv
-  POSTGRES_DB=vas3k_club
+  POSTGRES_DB=rationalanswer
   POSTGRES_USER=postgres
   POSTGRES_PASSWORD=postgres
   POSTGRES_HOST=localhost
@@ -41,31 +41,31 @@ Once you decided to code something in the project you'll need to setup your envi
   <details><summary>In case you really want setup local postgres then go under cut...</summary>
 
     Brief instruction:
-  
+
     1. Install postgresql (for macos https://postgresapp.com/ is easies start)
     2. After you install and run postgress create a project database:
           ```sh
           # create db
           $ psql postgres
-          postgres=# createdb vas3k_club
+          postgres=# createdb rationalanswer
 
-          # create user (user: vas3k, password: vas3k)
+          # create user (user: ra, password: rationalanswer)
           postgres=# createuser --interactive --pwpromp
 
           # grant priviliges
-          postgres=# GRANT ALL PRIVILEGES ON DATABASE vas3k_club TO vas3k;
-          postgres=# \connect vas3k_club
-          postgres=# GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO vas3k;
-          postgres=# GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public to vas3k;
-          postgres=# GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public to vas3k;
+          postgres=# GRANT ALL PRIVILEGES ON DATABASE rationalanswer TO ra;
+          postgres=# \connect rationalanswer
+          postgres=# GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ra;
+          postgres=# GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public to ra;
+          postgres=# GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public to ra;
           postgres=# \q
 
           # check connection
-          $ psql -d vas3k_club -U vas3k
+          $ psql -d rationalanswer -U ra
           ```
 
   </details>
-  
+
 #### Setup frontend
 ```sh
 $ cd frontend
