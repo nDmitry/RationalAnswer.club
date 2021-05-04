@@ -19,7 +19,7 @@ ALLOWED_HOSTS = ["*", "127.0.0.1", "localhost", "0.0.0.0", "rationalanswer.ru"]
 INTERNAL_IPS = ["127.0.0.1"]
 
 ADMINS = [
-    ("Admin", "club@rationalanswer.ru"),
+    ("admin", "contact@rationalanswer.ru"),
 ]
 
 INSTALLED_APPS = [
@@ -152,8 +152,6 @@ CACHES = {
     }
 }
 
-LANDING_CACHE_TIMEOUT = 60 * 60 * 24
-
 # Email
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -162,13 +160,13 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "Вастрик.Клуб <club@rationalanswer.ru>"
+DEFAULT_FROM_EMAIL = "Сообщество RationalAnswer <contact@rationalanswer.ru>"
 
 # App
 
 APP_HOST = os.environ.get("APP_HOST") or "http://127.0.0.1:8000"
-APP_NAME = "Вастрик.Клуб"
-APP_DESCRIPTION = "Всё интересное происходит за закрытыми дверями"
+APP_NAME = "RationalAnswer"
+APP_DESCRIPTION = "Ищем разумные ответы на вопросы вместе"
 LAUNCH_DATE = datetime(2020, 4, 13)
 
 AUTH_CODE_LENGTH = 6

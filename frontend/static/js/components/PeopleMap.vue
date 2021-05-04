@@ -34,8 +34,8 @@ export default {
     },
     data() {
         return {
-            accessToken: "pk.eyJ1IjoidmFzM2siLCJhIjoiY2thZ254NXVwMDhkbjJ5dDk5eGh5Y21wbyJ9.wYXG58PrErQfRHTflvdSfA",
-            mapStyle: "mapbox://styles/ra/ckagmhzm90tkd1inu8pg76p9s/draft",
+            accessToken: "pk.eyJ1IjoicmVpZ25leSIsImEiOiJja29hM2pqenMzMmRrMndtdjVyaHIyOHY0In0.X4xEtx1YqqTP-i88An5MbA",
+            mapStyle: "mapbox://styles/reigney/ckoa3libp0pqm17pqwi1icffv/draft",
             coordinates: [18.3, 51.06],
             defaultAvatar: "https://i.rationalanswer.ru/v.png",
         };

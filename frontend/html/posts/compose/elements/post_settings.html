@@ -1,5 +1,5 @@
 {% if mode == "create" or form.instance.is_public or form.instance.comment_count < 10 or form.instance.published_at is None or me.is_moderator %}
-<div class="form-row form-row-checkbox">
+<div class="form-row form-row-checkbox form-row-hidden">
     {{ form.is_public }}
     <label for="{{ form.is_public.id_for_label }}">Пост виден в Большой Интернет?</label>
     <span class="form-row-help form-row-help-wide">

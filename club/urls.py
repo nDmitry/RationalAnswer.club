@@ -9,7 +9,7 @@ from auth.views.external import external_login
 from auth.views.patreon import patreon_login, patreon_oauth_callback
 from comments.views import create_comment, edit_comment, delete_comment, show_comment, upvote_comment, \
     retract_comment_vote, pin_comment
-from landing.views import landing, docs, god_settings
+from landing.views import docs, god_settings
 from misc.views import achievements, network, robots, generate_ical_invite, generate_google_invite
 from notifications.views import weekly_digest, email_unsubscribe, email_confirm, daily_digest, email_digest_switch, \
     link_telegram
@@ -40,7 +40,7 @@ POST_TYPE_RE = r"(?P<post_type>(all|{}))".format("|".join(dict(Post.TYPES).keys(
 ORDERING_RE = r"(?P<ordering>(activity|new|top|top_week|top_month|hot))"
 
 urlpatterns = [
-    path("", auth_switch(landing, feed), name="index"),
+    path("", feed, name="index"),
 
     path("join/", join, name="join"),
     path("auth/login/", login, name="login"),

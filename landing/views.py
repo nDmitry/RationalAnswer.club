@@ -19,21 +19,6 @@ EXISTING_DOCS = [
 ]
 
 
-def landing(request):
-    stats = cache.get("landing_stats")
-    if not stats:
-        stats = {
-            "users": User.registered_members().count(),
-            "countries": User.registered_members().values("country")
-            .annotate(total=Count("country")).order_by().count() + 1,
-        }
-        cache.set("landing_stats", stats, settings.LANDING_CACHE_TIMEOUT)
-
-    return render(request, "landing.html", {
-        "stats": stats
-    })
-
-
 def docs(request, doc_slug):
     if doc_slug not in EXISTING_DOCS:
         raise Http404()
