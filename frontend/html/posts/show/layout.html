@@ -56,7 +56,7 @@
                         {% endif %}
                     {% endif %}
 
-                    {% if me and me.is_club_member %}
+                    {% if me %}
                         <post-subscription
                             url="{% url "toggle_post_subscription" post.slug %}"
                             {% if subscription %}is-active-by-default{% endif %}
