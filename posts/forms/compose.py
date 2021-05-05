@@ -12,7 +12,7 @@ from common.forms import ImageUploadField
 
 class PostForm(forms.ModelForm):
     topic = forms.ModelChoiceField(
-        label="Комната",
+        label="Раздел",
         required=False,
         empty_label="Для всех",
         queryset=Topic.objects.filter(is_visible=True).all(),
