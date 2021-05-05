@@ -141,7 +141,7 @@ class ViewEmailLoginTests(TestCase):
     def test_login_by_email_positive(self):
         # when
         response = self.client.post(reverse('email_login'),
-                                    data={'email_or_login': self.new_user.email, })
+                                    data={'email': self.new_user.email, })
 
         # then
         self.assertContains(response=response, text="Вам отправлен код!", status_code=200)
@@ -169,12 +169,12 @@ class ViewEmailLoginTests(TestCase):
 
     def test_login_user_not_exist(self):
         response = self.client.post(reverse('email_login'),
-                                    data={'email_or_login': 'not-existed@user.com', })
+                                    data={'email': 'not-existed@user.com', })
         self.assertContains(response=response, text="Такого юзера нет 🤔", status_code=200)
 
     def test_secret_hash_login(self):
         response = self.client.post(reverse('email_login'),
-                                    data={'email_or_login': self.new_user.secret_auth_code, })
+                                    data={'email': self.new_user.secret_auth_code, })
 
         self.assertRedirects(response=response, expected_url=f'/user/{self.new_user.slug}/',
                              fetch_redirect_response=False)
@@ -182,7 +182,7 @@ class ViewEmailLoginTests(TestCase):
 
     def test_secret_hash_user_not_exist(self):
         response = self.client.post(reverse('email_login'),
-                                    data={'email_or_login': 'not-existed@user.com|-xxx', })
+                                    data={'email': 'not-existed@user.com|-xxx', })
         self.assertContains(response=response, text="Такого юзера нет 🤔", status_code=200)
 
     @skip("todo")
