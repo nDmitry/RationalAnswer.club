@@ -8,6 +8,7 @@
                 <div class="login-service-form">
                     <form action="{% url "email_login" %}" method="post">
                         <input type="email" name="email" value="{{ email|default:"" }}" placeholder="your@gmail.com" class="login-email" required>
+                        <p class="login-service-description">Ещё не зарегистрированы? Всё равно вводите.</p>
                         {% if goto %}<input type="hidden" name="goto" value="{{ goto }}">{% endif %}
                         <button type="submit" class="button login-button" style="min-width: 200px;">🤙 Войти</button>
                     </form>
