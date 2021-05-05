@@ -83,18 +83,6 @@ def check_user_permissions(request, **context):
             log.info("User was banned. Redirecting to 'banned' page...")
             return redirect("banned")
 
-        if request.me.moderation_status == User.MODERATION_STATUS_INTRO:
-            log.info("New user. Redirecting to intro...")
-            return redirect("intro")
-
-        if request.me.moderation_status == User.MODERATION_STATUS_REJECTED:
-            log.info("Rejected user. Redirecting to 'rejected' page...")
-            return redirect("rejected")
-
-        if request.me.moderation_status == User.MODERATION_STATUS_ON_REVIEW:
-            log.info("User on review. Redirecting to 'on_review' page...")
-            return redirect("on_review")
-
     return None
 
 

@@ -24,8 +24,7 @@ def profile(request, user_slug):
     user = get_object_or_404(User, slug=user_slug)
 
     if not request.me.is_moderator:
-        # hide unverified and deleted users
-        if user.moderation_status != User.MODERATION_STATUS_APPROVED or user.deleted_at:
+        if user.deleted_at:
             raise Http404()
 
     # handle auth redirect
