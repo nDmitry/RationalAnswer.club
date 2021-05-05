@@ -200,7 +200,11 @@ PATREON_CLIENT_ID = os.getenv("PATREON_CLIENT_ID")
 PATREON_CLIENT_SECRET = os.getenv("PATREON_CLIENT_SECRET")
 PATREON_REDIRECT_URL = f"{APP_HOST}/auth/patreon_callback/"
 PATREON_SCOPE = "identity identity[email]"
-PATREON_GOD_IDS = ["8724543"]
+PATREON_GOD_IDS = [
+    "19127281" # Dmitry
+    "15759489" # Pavel
+    "8724543" # vas3k
+]
 
 JWT_PRIVATE_KEY = os.getenv("JWT_PRIVATE_KEY")
 JWT_PUBLIC_KEY = """-----BEGIN PUBLIC KEY-----
