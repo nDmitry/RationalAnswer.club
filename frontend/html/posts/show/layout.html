@@ -45,12 +45,18 @@
                             </select>
                         </form>
                     {% elif post.is_commentable and post.is_visible %}
-                        <a href="#comments" class="post-comments-count">
-                            Откомментируйте первым 👇
-                        </a>
+                        {% if me and me.is_club_member %}
+                            <a href="#comments" class="post-comments-count">
+                                Откомментируйте первым 👇
+                            </a>
+                        {% else %}
+                            <span class="post-comments-count">
+                                Комментариев пока нет
+                            </span>
+                        {% endif %}
                     {% endif %}
 
-                    {% if me %}
+                    {% if me and me.is_club_member %}
                         <post-subscription
                             url="{% url "toggle_post_subscription" post.slug %}"
                             {% if subscription %}is-active-by-default{% endif %}
@@ -66,7 +72,7 @@
                     </div>
                 {% endif %}
 
-                {% if me and post.is_commentable and post.is_visible or me.is_moderator %}
+                {% if me and me.is_club_member and post.is_commentable and post.is_visible or me.is_moderator %}
                     <div class="post-comments-form">
                         {% include "comments/forms/comment.html" with post=post form=comment_form %}
                     </div>
@@ -78,7 +84,7 @@
             {% include "posts/widgets/not_commentable.html" %}
         {% endif %}
 
-        {% if not me %}
+        {% if not me or not me.is_club_member %}
             {% include "posts/widgets/join_the_club.html" %}
         {% endif %}
     </div>
