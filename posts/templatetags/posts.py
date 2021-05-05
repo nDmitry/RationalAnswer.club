@@ -10,6 +10,7 @@ from common.regexp import FAVICON_RE
 from common.markdown.markdown import markdown_text, markdown_plain
 from posts.helpers import extract_any_image
 from posts.models.post import Post
+from users.models.user import User
 
 register = template.Library()
 
@@ -88,7 +89,11 @@ def link_summary(post):
 
 @register.filter
 def can_upvote(user, post_or_comment):
-    return bool(user and user != post_or_comment.author)
+    return bool(
+        user and
+        user != post_or_comment.author and
+        user.moderation_status == User.MODERATION_STATUS_APPROVED
+    )
 
 
 @register.filter
