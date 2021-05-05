@@ -25,10 +25,10 @@ class Command(BaseCommand):
             .filter(
                 email_digest_type=User.EMAIL_DIGEST_TYPE_DAILY,
                 is_email_verified=True,
-                membership_expires_at__gte=datetime.utcnow() - timedelta(days=14),
-                moderation_status=User.MODERATION_STATUS_APPROVED
+                membership_expires_at__gte=datetime.utcnow() - timedelta(days=14)
             )\
-            .exclude(is_email_unsubscribed=True)
+            .exclude(is_email_unsubscribed=True)\
+            .exclude(moderation_status=User.MODERATION_STATUS_DELETED)
 
         for user in subscribed_users:
             if not options.get("production") and user.email != "dima.nikitenko@gmail.com":
