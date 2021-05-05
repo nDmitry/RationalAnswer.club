@@ -178,10 +178,14 @@ class User(models.Model, ModelDiffMixin):
         return (self.roles and self.ROLE_MODERATOR in self.roles) or self.is_god
 
     @property
+    def is_active(self):
+        return not self.is_banned \
+               and self.deleted_at is None
+
+    @property
     def is_club_member(self):
         return self.moderation_status == User.MODERATION_STATUS_APPROVED \
-               and not self.is_banned \
-               and self.deleted_at is None
+               and self.is_active
 
     @property
     def is_paid_member(self):
