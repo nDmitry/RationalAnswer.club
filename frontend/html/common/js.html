@@ -4,6 +4,7 @@
 <script>
     window.imageUploadUrl = "{{ settings.MEDIA_UPLOAD_URL }}";
     window.imageUploadCode = "{{ settings.MEDIA_UPLOAD_CODE }}";
+    window.defaultAvatar = '{% static "images/v.png" %}';
 </script>
 {% render_bundle "main" "js" %}
 

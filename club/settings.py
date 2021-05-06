@@ -224,7 +224,8 @@ c+Ha7cw3U+n6KI4idHLiwa0CAwEAAQ==
 JWT_ALGORITHM = "RS256"
 JWT_EXP_TIMEDELTA = timedelta(days=120)
 
-MEDIA_UPLOAD_URL = "https://i.rationalanswer.ru/upload/multipart/"
+MEDIA_HOST = os.getenv("MEDIA_HOST")
+MEDIA_UPLOAD_URL = os.getenv("MEDIA_UPLOAD_URL")
 MEDIA_UPLOAD_CODE = os.getenv("MEDIA_UPLOAD_CODE")
 VIDEO_EXTENSIONS = {"mp4", "mov", "webm"}
 IMAGE_EXTENSIONS = {"jpg", "jpeg", "png", "gif"}

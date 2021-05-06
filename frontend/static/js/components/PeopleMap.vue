@@ -37,7 +37,7 @@ export default {
             accessToken: "pk.eyJ1IjoicmVpZ25leSIsImEiOiJja29hM2pqenMzMmRrMndtdjVyaHIyOHY0In0.X4xEtx1YqqTP-i88An5MbA",
             mapStyle: "mapbox://styles/reigney/ckoa3libp0pqm17pqwi1icffv/draft",
             coordinates: [18.3, 51.06],
-            defaultAvatar: "https://i.rationalanswer.ru/v.png",
+            defaultAvatar: window.defaultAvatar,
         };
     },
     created() {

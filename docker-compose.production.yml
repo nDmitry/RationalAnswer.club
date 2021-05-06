@@ -12,6 +12,7 @@ services:
       - PYTHONUNBUFFERED=1
       - DEBUG=false
       - APP_HOST=https://rationalanswer.ru
+      - MEDIA_HOST=https://i.rationalanswer.ru
       - MEDIA_UPLOAD_URL=https://i.rationalanswer.ru/upload/
       - POSTGRES_DB=rationalanswer
       - POSTGRES_USER=ra

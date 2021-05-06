@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from uuid import uuid4
+from django.conf import settings
 
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
@@ -52,7 +53,7 @@ class User(models.Model, ModelDiffMixin):
         (MODERATION_STATUS_DELETED, MODERATION_STATUS_DELETED),
     ]
 
-    DEFAULT_AVATAR = "https://i.rationalanswer.ru/v.png"
+    DEFAULT_AVATAR = settings.STATIC_URL + "/images/v.png"
 
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     slug = models.CharField(max_length=32, unique=True)

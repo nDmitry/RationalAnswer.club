@@ -111,15 +111,15 @@ def is_video(value):
 
 @register.filter
 def resized_image(value, arg="full"):
-    if not value or "://i.rationalanswer.ru/" not in value:
+    if not value or settings.MEDIA_HOST not in value:
         return value
 
     if is_video(value):
         return value
 
-    if value.startswith("https://i.rationalanswer.ru/full/"):
+    if value.startswith(settings.MEDIA_HOST + "/full/"):
         return value.replace(
-            "https://i.rationalanswer.ru/full/", "https://i.rationalanswer.ru/{}/".format(arg)
+            settings.MEDIA_HOST + "/full/", settings.MEDIA_HOST + "/{}/".format(arg)
         )
     else:
         return value

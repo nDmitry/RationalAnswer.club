@@ -14,7 +14,8 @@ jobs:
         uses: appleboy/ssh-action@e59c0ee97a7e5240ed9eb489791adbb9c9ac7f6b
         env:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          MEDIA_UPLOAD_URL: "https://i.rationalanswer.ru/upload/"
+          MEDIA_HOST: "https://i.rationalanswer.ru"
+          MEDIA_UPLOAD_URL: "https://i.rationalanswer.ru/upload/multipart/"
         with:
           host: ${{ secrets.PRODUCTION_SSH_HOST }}
           username: ${{ secrets.PRODUCTION_SSH_USERNAME }}
