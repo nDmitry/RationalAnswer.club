@@ -183,6 +183,11 @@ class User(models.Model, ModelDiffMixin):
                and self.deleted_at is None
 
     @property
+    def is_rejected(self):
+        return self.moderation_status == User.MODERATION_STATUS_REJECTED \
+               and self.is_active
+
+    @property
     def is_club_member(self):
         return self.moderation_status == User.MODERATION_STATUS_APPROVED \
                and self.is_active
