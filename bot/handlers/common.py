@@ -5,6 +5,7 @@ from typing import Optional
 
 from telegram import Update, ParseMode
 
+from club import features
 from comments.models import Comment
 from posts.models.post import Post
 from users.models.user import User
@@ -38,8 +39,12 @@ def get_club_user(update: Update):
         update.message.reply_text(f"🙈 Ты в бане, мы больше не дружим")
         return None
 
-    if not user.is_active:
+    if features.PUBLIC_CONTENT and not user.is_active:
         update.message.reply_text(f"😣 Твой профиль в Клубе неактивен")
+        return None
+
+    if not features.PUBLIC_CONTENT and not user.is_club_member:
+        update.message.reply_text(f"😣 Твой профиль в Клубе неактивен. Плоти долор!")
         return None
 
     return user
