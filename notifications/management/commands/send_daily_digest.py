@@ -7,6 +7,7 @@ from django.core.management import BaseCommand
 from django.template.defaultfilters import date
 from django.urls import reverse
 
+from club import features
 from notifications.email.sender import send_club_email
 from users.models.user import User
 
@@ -27,8 +28,12 @@ class Command(BaseCommand):
                 is_email_verified=True,
                 membership_expires_at__gte=datetime.utcnow() - timedelta(days=14)
             )\
-            .exclude(is_email_unsubscribed=True)\
-            .exclude(moderation_status=User.MODERATION_STATUS_DELETED)
+            .exclude(is_email_unsubscribed=True)
+
+        if features.PUBLIC_CONTENT:
+            subscribed_users = subscribed_users.exclude(moderation_status=User.MODERATION_STATUS_DELETED)
+        else:
+            subscribed_users = subscribed_users.filter(moderation_status=User.MODERATION_STATUS_APPROVED)
 
         for user in subscribed_users:
             if not options.get("production") and user.email != "dima.nikitenko@gmail.com":
