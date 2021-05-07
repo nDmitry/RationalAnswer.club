@@ -1,1 +1,2 @@
 PUBLIC_CONTENT = True
+EMAIL_SIGN_UP = True

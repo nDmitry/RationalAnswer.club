@@ -1,3 +1,4 @@
+from club import features
 import random
 from datetime import datetime, timedelta
 
@@ -28,6 +29,7 @@ def login(request):
     return render(request, "auth/login.html", {
         "goto": request.GET.get("goto"),
         "email": request.GET.get("email"),
+        "email_sign_up": features.EMAIL_SIGN_UP,
     })
 
 
