@@ -2,6 +2,7 @@ from django.conf import settings
 from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404, render
 
+from club import features
 from auth.helpers import auth_required
 from comments.models import Comment
 from common.pagination import paginate
@@ -24,7 +25,11 @@ def profile(request, user_slug):
     user = get_object_or_404(User, slug=user_slug)
 
     if not request.me.is_moderator:
+        # hide unverified and deleted users
         if user.deleted_at:
+            raise Http404()
+
+        if not features.PUBLIC_CONTENT and user.moderation_status != User.MODERATION_STATUS_APPROVED:
             raise Http404()
 
     # handle auth redirect
