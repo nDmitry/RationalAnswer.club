@@ -4,6 +4,7 @@ import pytz
 from django import forms
 from django.core.exceptions import ValidationError
 
+from club import features
 from common.url_metadata_parser import parse_url_preview
 from posts.models.post import Post
 from posts.models.topics import Topic
@@ -19,9 +20,9 @@ class PostForm(forms.ModelForm):
     )
     is_public = forms.BooleanField(
         label="Виден ли в большой интернет?",
-        initial=True,
+        initial=features.PUBLIC_CONTENT,
         required=False,
-        disabled=True
+        disabled=not features.PUBLIC_CONTENT,
     )
 
     class Meta:
