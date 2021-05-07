@@ -2,11 +2,11 @@ from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include, re_path
 
-from auth.helpers import auth_switch
-from auth.views.auth import login, logout, debug_dev_login, debug_random_login, join
+# from auth.helpers import auth_switch
+from auth.views.auth import login, logout, debug_dev_login, debug_random_login#, join
 from auth.views.email import email_login, email_login_code
 from auth.views.external import external_login
-from auth.views.patreon import patreon_login, patreon_oauth_callback
+# from auth.views.patreon import patreon_login, patreon_oauth_callback
 from comments.views import create_comment, edit_comment, delete_comment, show_comment, upvote_comment, \
     retract_comment_vote, pin_comment
 from landing.views import docs, god_settings
@@ -14,7 +14,7 @@ from misc.views import achievements, network, robots, generate_ical_invite, gene
 from notifications.views import weekly_digest, email_unsubscribe, email_confirm, daily_digest, email_digest_switch, \
     link_telegram
 from notifications.webhooks import webhook_event
-from payments.views import membership_expired, pay, done, stripe_webhook, stop_subscription
+# from payments.views import membership_expired, pay, done, stripe_webhook, stop_subscription
 from posts.api import md_show_post, api_show_post
 from posts.models.post import Post
 from posts.rss import NewPostsRss
@@ -42,11 +42,11 @@ ORDERING_RE = r"(?P<ordering>(activity|new|top|top_week|top_month|hot))"
 urlpatterns = [
     path("", feed, name="index"),
 
-    path("join/", join, name="join"),
+    # path("join/", join, name="join"),
     path("auth/login/", login, name="login"),
     path("auth/logout/", logout, name="logout"),
-    path("auth/patreon/", patreon_login, name="patreon_login"),
-    path("auth/patreon_callback/", patreon_oauth_callback, name="patreon_oauth_callback"),
+    # path("auth/patreon/", patreon_login, name="patreon_login"),
+    # path("auth/patreon_callback/", patreon_oauth_callback, name="patreon_oauth_callback"),
     path("auth/email/", email_login, name="email_login"),
     path("auth/email/code/", email_login_code, name="email_login_code"),
     path("auth/external/", external_login, name="external_login"),
