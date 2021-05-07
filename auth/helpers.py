@@ -5,9 +5,10 @@ import jwt
 from django.shortcuts import redirect, render, get_object_or_404
 
 from auth.models import Session, Apps
-from club import settings
+from club import settings, features
 from club.exceptions import AccessDenied, ApiAuthRequired, ApiAccessDenied
 from users.models.user import User
+from posts.models.post import Post
 
 log = logging.getLogger(__name__)
 
@@ -65,23 +66,47 @@ def auth_required(view):
 
 
 def check_user_permissions(request, **context):
-    if not request.me:
+    public_pages = [] # for exact matching
+    public_paths = [] # for partial matching
+
+    if request.me:
+        public_paths.extend(["/profile/", "/auth/", "/intro/", "/network/", "/messages/"])
+
+    if features.PUBLIC_CONTENT:
+        public_pages.append("/")
+        public_paths.extend(["/search/", "/room/", "/telegram/", "/all/"])
+        public_paths.extend(["/{}/".format(t) for t in dict(Post.TYPES).keys()])
+
+        if request.me:
+            public_paths.append("/user/" + request.me.slug + "/")
+
+    is_public = request.path in public_pages or len([p for p in public_paths if request.path.startswith(p)]) > 0
+
+    if is_public:
         return None
 
-    # FIXME: really bad IF, fix it
-    if not request.path.startswith("/profile/") \
-            and not request.path.startswith("/auth/") \
-            and not request.path.startswith("/intro/") \
-            and not request.path.startswith("/network/") \
-            and not request.path.startswith("/messages/"):
+    if not request.me:
+        return render(request, "auth/access_denied.html", context)
 
-        if request.me.membership_expires_at < datetime.utcnow():
-            log.info("User membership expired. Redirecting to payments page...")
-            return redirect("membership_expired")
+    if request.me.membership_expires_at < datetime.utcnow():
+        log.info("User membership expired. Redirecting to payments page...")
+        return redirect("membership_expired")
 
-        if request.me.is_banned:
-            log.info("User was banned. Redirecting to 'banned' page...")
-            return redirect("banned")
+    if request.me.is_banned:
+        log.info("User was banned. Redirecting to 'banned' page...")
+        return redirect("banned")
+
+    if request.me.moderation_status == User.MODERATION_STATUS_INTRO:
+        log.info("New user. Redirecting to intro...")
+        return redirect("intro")
+
+    if request.me.moderation_status == User.MODERATION_STATUS_REJECTED:
+        log.info("Rejected user. Redirecting to 'rejected' page...")
+        return redirect("rejected")
+
+    if request.me.moderation_status == User.MODERATION_STATUS_ON_REVIEW:
+        log.info("User on review. Redirecting to 'on_review' page...")
+        return redirect("on_review")
 
     return None
 

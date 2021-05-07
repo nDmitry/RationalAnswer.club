@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 
+from club import features
 from auth.helpers import auth_required
 from common.pagination import paginate
 from posts.models.post import Post
@@ -40,7 +41,7 @@ def feed(request, post_type=POST_TYPE_ALL, topic_slug=None, ordering=ORDERING_AC
         posts = posts.filter(topic=topic)
 
     # hide non-public posts and intros from unauthorized users
-    if not request.me:
+    if not request.me and not features.PUBLIC_CONTENT:
         posts = posts.exclude(is_public=False).exclude(type=Post.TYPE_INTRO)
 
     # exclude shadow banned posts, but show them in "new" tab

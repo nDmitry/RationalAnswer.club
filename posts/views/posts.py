@@ -3,6 +3,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 
 from auth.helpers import check_user_permissions, auth_required
+from club import features
 from club.exceptions import AccessDenied, ContentDuplicated, RateLimitException
 from common.request import ajax_request
 from posts.forms.compose import POST_TYPE_MAP, PostTextForm
@@ -28,7 +29,7 @@ def show_post(request, post_type, post_slug):
             raise Http404()
 
     # don't show private posts into public
-    if not post.is_public:
+    if not post.is_public and not features.PUBLIC_CONTENT:
         access_denied = check_user_permissions(request, post=post)
         if access_denied:
             return access_denied
