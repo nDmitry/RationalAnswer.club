@@ -2,11 +2,12 @@ from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include, re_path
 
-# from auth.helpers import auth_switch
-from auth.views.auth import login, logout, debug_dev_login, debug_random_login#, join
+from club import features
+from auth.helpers import auth_switch
+from auth.views.auth import login, logout, debug_dev_login, debug_random_login, join
 from auth.views.email import email_login, email_login_code
 from auth.views.external import external_login
-# from auth.views.patreon import patreon_login, patreon_oauth_callback
+from auth.views.patreon import patreon_login, patreon_oauth_callback
 from comments.views import create_comment, edit_comment, delete_comment, show_comment, upvote_comment, \
     retract_comment_vote, pin_comment
 from landing.views import docs, god_settings
@@ -14,7 +15,7 @@ from misc.views import achievements, network, robots, generate_ical_invite, gene
 from notifications.views import weekly_digest, email_unsubscribe, email_confirm, daily_digest, email_digest_switch, \
     link_telegram
 from notifications.webhooks import webhook_event
-# from payments.views import membership_expired, pay, done, stripe_webhook, stop_subscription
+from payments.views import membership_expired, pay, done, stripe_webhook, stop_subscription
 from posts.api import md_show_post, api_show_post
 from posts.models.post import Post
 from posts.rss import NewPostsRss
@@ -42,20 +43,11 @@ ORDERING_RE = r"(?P<ordering>(activity|new|top|top_week|top_month|hot))"
 urlpatterns = [
     path("", feed, name="index"),
 
-    # path("join/", join, name="join"),
     path("auth/login/", login, name="login"),
     path("auth/logout/", logout, name="logout"),
-    # path("auth/patreon/", patreon_login, name="patreon_login"),
-    # path("auth/patreon_callback/", patreon_oauth_callback, name="patreon_oauth_callback"),
     path("auth/email/", email_login, name="email_login"),
     path("auth/email/code/", email_login_code, name="email_login_code"),
     path("auth/external/", external_login, name="external_login"),
-
-    # path("monies/", pay, name="pay"),
-    # path("monies/done/", done, name="done"),
-    # path("monies/membership_expired/", membership_expired, name="membership_expired"),
-    # path("monies/stripe/webhook/", stripe_webhook, name="stripe_webhook"),
-    # path("monies/subscription/<str:subscription_id>/stop/", stop_subscription, name="stop_subscription"),
 
     path("user/<slug:user_slug>/", profile, name="profile"),
     path("user/<slug:user_slug>.json", api_profile, name="api_profile"),
@@ -66,7 +58,6 @@ urlpatterns = [
     path("user/<slug:user_slug>/edit/account/", edit_account, name="edit_account"),
     path("user/<slug:user_slug>/edit/bot/", edit_bot, name="edit_bot"),
     path("user/<slug:user_slug>/edit/notifications/", edit_notifications, name="edit_notifications"),
-    # path("user/<slug:user_slug>/edit/monies/", edit_payments, name="edit_payments"),
     path("user/<slug:user_slug>/edit/data/", edit_data, name="edit_data"),
     path("user/<slug:user_slug>/edit/data/request/", request_data, name="request_user_data"),
     path("user/<slug:user_slug>/admin/", admin_profile, name="admin_profile"),
@@ -147,6 +138,21 @@ urlpatterns = [
     path("<slug:post_type>/<slug:post_slug>.md", md_show_post, name="md_show_post"),
     path("<slug:post_type>/<slug:post_slug>.json", api_show_post, name="api_show_post"),
 ]
+
+if not features.FREE_MEMBERSHIP:
+    urlpatterns = [
+        path("join/", join, name="join"),
+        path("auth/patreon/", patreon_login, name="patreon_login"),
+        path("auth/patreon_callback/", patreon_oauth_callback, name="patreon_oauth_callback"),
+
+        path("monies/", pay, name="pay"),
+        path("monies/done/", done, name="done"),
+        path("monies/membership_expired/", membership_expired, name="membership_expired"),
+        path("monies/stripe/webhook/", stripe_webhook, name="stripe_webhook"),
+        path("monies/subscription/<str:subscription_id>/stop/", stop_subscription, name="stop_subscription"),
+
+        path("user/<slug:user_slug>/edit/monies/", edit_payments, name="edit_payments"),
+    ] + urlpatterns
 
 if settings.DEBUG:
     import debug_toolbar

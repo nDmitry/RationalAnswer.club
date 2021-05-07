@@ -57,7 +57,7 @@ def email_login(request):
                 user, _ = User.objects.get_or_create(
                     email=email_or_login.lower(),
                     defaults=dict(
-                        membership_platform_type=User.MEMBERSHIP_PLATFORM_CORE,
+                        membership_platform_type=User.MEMBERSHIP_PLATFORM_FREE,
                         full_name=email_or_login[:email_or_login.find("@")],
                         membership_started_at=now,
                         membership_expires_at=now + timedelta(days=100 * 365),
