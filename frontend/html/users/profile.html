@@ -87,9 +87,9 @@
                 <div class="profile-header">
                     <a href="{% url "show_post" "intro" intro.slug %}">Интро</a>
 
-                    {% if me.is_club_member %}
+                    {% if user.is_club_member %}
                         <span title="Проверено">✔️</span>
-                    {% elif me.is_rejected %}
+                    {% elif user.is_rejected %}
                         <span title="Не срослось">❌</span>
                     {% else %}
                         <span title="На проверке">⏳</span>
