@@ -46,6 +46,7 @@ Consider next required conditions for running tests:
   REDIS_DB=0
   REDIS_HOST=localhost
   ```
+- remove all the feature flag variables from the `.env` file
 
 ## Run tests
 

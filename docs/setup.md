@@ -4,14 +4,14 @@
 
 To run telegram bot you have to:
   1. Copy env.exmaple file: `cp ./club/.env.example ./club/.env`
-  2. Fill all the requirement fields in `./club/env`, such as `TELEGRAM_TOKEN` etc.
+  2. Fill all the required fields in `./club/env`, such as `TELEGRAM_TOKEN` etc.
       - `TELEGRAM_TOKEN` you can get from [@BotFather](https://t.me/BotFather)
       - To get `TELEGRAM_CLUB_CHANNEL_URL`, `TELEGRAM_ADMIN_CHAT_ID` etc Just Simply Forward a message from your group/channel to [@JsonDumpBot](https://t.me/JsonDumpBot) or [@getidsbot](https://t.me/getidsbot)
   3. Rebuild application: `docker-compose up --build`
 
 ## Docker-compose
 
-Check out our [docker-compose.yml](https://github.com/vas3k/vas3k.club/blob/master/docker-compose.yml) to understand the infrastructure.
+Check out our [docker-compose.yml](https://github.com/nDmitry/RationalAnswer/blob/master/docker-compose.yml) to understand the infrastructure.
 
 ## Local development
 
