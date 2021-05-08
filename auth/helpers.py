@@ -66,6 +66,11 @@ def auth_required(view):
 
 
 def check_user_permissions(request, **context):
+    if request.me and request.me.moderation_status == User.MODERATION_STATUS_INTRO and \
+        not request.path.startswith("/intro/"):
+        log.info("New user. Redirecting to intro...")
+        return redirect("intro")
+
     public_pages = [] # for exact matching
     public_paths = [] # for partial matching
 
@@ -95,10 +100,6 @@ def check_user_permissions(request, **context):
     if request.me.is_banned:
         log.info("User was banned. Redirecting to 'banned' page...")
         return redirect("banned")
-
-    if request.me.moderation_status == User.MODERATION_STATUS_INTRO:
-        log.info("New user. Redirecting to intro...")
-        return redirect("intro")
 
     if request.me.moderation_status == User.MODERATION_STATUS_REJECTED:
         log.info("Rejected user. Redirecting to 'rejected' page...")
