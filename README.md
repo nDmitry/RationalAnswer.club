@@ -103,7 +103,7 @@ We also run the public [Github Project Board](https://github.com/nDmitry/Rationa
 
 ## 👍 Our top contributors
 
-First of all, this is a fork of another [project](https://github.com/vas3k/vas3k.club) originally developed by [@vas3k](https://github.com/vas3k). So thanks to him and their top contributors for the great amount of work done!
+First of all, this is a fork of another [project](https://github.com/nDmitry/RationalAnswer) originally developed by [@vas3k](https://github.com/vas3k). So thanks to him and their top contributors for the great amount of work done!
 
 Take some time to press F and give some respects to our [best contributors](https://github.com/nDmitry/RationalAnswer/graphs/contributors), who spent their own time to make the club better.
 
