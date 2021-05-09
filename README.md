@@ -105,7 +105,7 @@ We also run the public [Github Project Board](https://github.com/nDmitry/Rationa
 
 First of all, this is a fork of another [project](https://github.com/vas3k/vas3k.club) originally developed by [@vas3k](https://github.com/vas3k). So thanks to him and their top contributors for the great amount of work done!
 
-Take some time to press F and give some respects to our [best contributors](https://github.com/nDmitry/RationalAnswer/graphs/contributors), who spent their own time to make the community better.
+Take some time to press F and give some respects to our [best contributors](https://github.com/nDmitry/RationalAnswer/graphs/contributors), who spent their own time to make the club better.
 
 - [@nDmitry](https://github.com/nDmitry)
 
@@ -116,6 +116,6 @@ Take some time to press F and give some respects to our [best contributors](http
 
 In other words, you can use the code for private and commercial purposes with an author attribution (by including the original license file).
 
-Feel free to contact us via email [contact@rationalanswer.ru](mailto:contact@rationalanswer.ru).
+Feel free to contact us via email [contact@rationalanswer.club](mailto:contact@rationalanswer.club).
 
 ❤️

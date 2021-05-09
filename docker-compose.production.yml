@@ -11,9 +11,9 @@ services:
       - MODE=production
       - PYTHONUNBUFFERED=1
       - DEBUG=false
-      - APP_HOST=https://rationalanswer.ru
-      - MEDIA_HOST=https://i.rationalanswer.ru
-      - MEDIA_UPLOAD_URL=https://i.rationalanswer.ru/upload/
+      - APP_HOST=https://rationalanswer.club
+      - MEDIA_HOST=https://i.rationalanswer.club
+      - MEDIA_UPLOAD_URL=https://i.rationalanswer.club/upload/
       - POSTGRES_DB=rationalanswer
       - POSTGRES_USER=ra
       - POSTGRES_PASSWORD=ra

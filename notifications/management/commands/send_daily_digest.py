@@ -41,7 +41,7 @@ class Command(BaseCommand):
                 continue
 
             # render user digest using a special html endpoint
-            digest_url = "https://rationalanswer.ru" + reverse("render_daily_digest", kwargs={"user_slug": user.slug})
+            digest_url = "https://rationalanswer.club" + reverse("render_daily_digest", kwargs={"user_slug": user.slug})
             self.stdout.write(f"Generating digest for user: {user.slug}")
 
             digest_html_response = requests.get(digest_url)
