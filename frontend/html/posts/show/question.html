@@ -22,13 +22,15 @@
             <div class="post-title">
                 <span class="p-name">{{ post.title | rutypography }}</span>
 
-                <span class="post-is-public">
-                    {% if post.is_public %}
-                        <i class="fas fa-globe-americas"></i>&nbsp;Публичный пост
-                    {% else %}
-                        <i class="fas fa-lock"></i>&nbsp;Только для своих
-                    {% endif %}
-                </span>
+                {% if not feature_public_content %}
+                    <span class="post-is-public">
+                        {% if post.is_public %}
+                            <i class="fas fa-globe-americas"></i>&nbsp;Публичный пост&nbsp;&nbsp;&nbsp;
+                        {% else %}
+                            <i class="fas fa-lock"></i>&nbsp;Только для своих&nbsp;&nbsp;&nbsp;
+                        {% endif %}
+                    </span>
+                {% endif %}
 
                 {% if post.label %}
                     {% include "posts/widgets/label.html" with label=post.label %}

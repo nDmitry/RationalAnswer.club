@@ -38,13 +38,15 @@
         </div>
 
         <div class="post-date">
-            <span class="post-is-public">
-                {% if post.is_public %}
-                    <i class="fas fa-globe-americas"></i>&nbsp;Публичный пост&nbsp;&nbsp;&nbsp;
-                {% else %}
-                    <i class="fas fa-lock"></i>&nbsp;Только для своих&nbsp;&nbsp;&nbsp;
-                {% endif %}
-            </span>
+            {% if not feature_public_content %}
+                <span class="post-is-public">
+                    {% if post.is_public %}
+                        <i class="fas fa-globe-americas"></i>&nbsp;Публичный пост&nbsp;&nbsp;&nbsp;
+                    {% else %}
+                        <i class="fas fa-lock"></i>&nbsp;Только для своих&nbsp;&nbsp;&nbsp;
+                    {% endif %}
+                </span>
+            {% endif %}
             {{ post.effective_published_at|date:"j E Y" }}&nbsp;&nbsp;&nbsp;
             <i class="fas fa-eye"></i>&nbsp;{{ post.view_count }}&nbsp;&nbsp;&nbsp;
             {% if me %}

@@ -2,6 +2,7 @@ from django.conf import settings
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 
+from club import features
 from auth.helpers import check_user_permissions, auth_required
 from club.exceptions import AccessDenied, ContentDuplicated, RateLimitException
 from common.request import ajax_request
@@ -60,6 +61,7 @@ def show_post(request, post_type, post_slug):
     return render_post(request, post, {
         "post_last_view_at": last_view_at,
         "linked_posts": linked_posts,
+        "feature_public_content": features.PUBLIC_CONTENT,
     })
 
 
