@@ -3,11 +3,19 @@
 
     {% if not me %}
     <p class="post-join-message">
-        Посты можно читать всем, но комментирование и всё остальное доступно только участникам Клуба.
+        Читать можно всем, но комментирование доступно только участникам Клуба.
     </p>
-    {% else %}
+    {% endif %}
+
+    {% if me and me.is_active %}
     <p class="post-join-message">
         Ваш профиль ещё не прошел модерацию, поэтому комментирование пока недоступно.
+    </p>
+    {% endif %}
+
+    {% if me and me.is_banned %}
+    <p class="post-join-message">
+        Вас забанили. Бан истечет {{ me.is_banned_until | date:"j E Y" }}.
     </p>
     {% endif %}
 
