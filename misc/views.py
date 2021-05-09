@@ -34,9 +34,9 @@ def robots(request):
         "User-agent: *",
         "Sitemap: https://rationalanswer.ru/sitemap.xml",
         "Host: https://rationalanswer.ru",
-        "Disallow: /intro/"
-        "Disallow: /user/"
-        "Disallow: /people/"
+        "Disallow: /intro/",
+        "Disallow: /user/",
+        "Disallow: /people/",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
