@@ -84,6 +84,8 @@ def check_user_permissions(request, **context):
 
         if request.me:
             public_paths.append("/user/" + request.me.slug + "/")
+        else:
+            public_paths.remove("/intro/") # was added from Post.TYPES
 
     is_public = request.path in public_pages or len([p for p in public_paths if request.path.startswith(p)]) > 0
 
