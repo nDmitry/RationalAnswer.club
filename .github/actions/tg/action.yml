@@ -10,7 +10,7 @@ inputs:
   chat_id:
     description: 'Chat id'
     required: false
-    default: "-1001287599988"
+    default: "-1001232447125"
 runs:
   using: "docker"
   image: "Dockerfile"
