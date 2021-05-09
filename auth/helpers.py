@@ -72,14 +72,14 @@ def check_user_permissions(request, **context):
         return redirect("intro")
 
     public_pages = [] # for exact matching
-    public_paths = ["/network/"] # for partial matching
+    public_paths = [] # for partial matching
 
     if request.me:
         public_paths.extend(["/profile/", "/auth/", "/intro/", "/messages/"])
 
     if features.PUBLIC_CONTENT:
         public_pages.append("/")
-        public_paths.extend(["/search/", "/room/", "/telegram/", "/all/"])
+        public_paths.extend(["/network/", "/search/", "/room/", "/telegram/", "/all/"])
         public_paths.extend(["/{}/".format(t) for t in dict(Post.TYPES).keys()])
 
         if request.me:
