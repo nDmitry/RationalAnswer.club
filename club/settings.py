@@ -127,7 +127,7 @@ REDIS_HOST = os.getenv("REDIS_HOST") or "localhost"
 REDIS_PORT = os.getenv("REDIS_PORT") or 6379
 Q_CLUSTER = {
     "name": "rationalanswer",
-    "workers": 4,
+    "workers": 2,
     "recycle": 500,
     "timeout": 30,
     "compress": True,
