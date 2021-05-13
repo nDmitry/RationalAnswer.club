@@ -15,8 +15,8 @@ services:
       - MEDIA_HOST=https://i.rationalanswer.club
       - MEDIA_UPLOAD_URL=https://i.rationalanswer.club/upload/
       - POSTGRES_DB=rationalanswer
-      - POSTGRES_USER=ra
-      - POSTGRES_PASSWORD=ra
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST=postgres
       - REDIS_DB=0
       - REDIS_HOST=redis
