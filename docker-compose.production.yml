@@ -13,7 +13,7 @@ services:
       - DEBUG=false
       - APP_HOST=https://rationalanswer.club
       - MEDIA_HOST=https://i.rationalanswer.club
-      - MEDIA_UPLOAD_URL=https://i.rationalanswer.club/upload/
+      - MEDIA_UPLOAD_URL=https://i.rationalanswer.club/upload/multipart/
       - POSTGRES_DB=rationalanswer
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
