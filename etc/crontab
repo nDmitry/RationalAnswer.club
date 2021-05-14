@@ -1,8 +1,8 @@
-30 2 * * *  /var/www/backup.sh >> /var/www/backup.log 2>&1
-0 1 * * * cd /var/www/rationalanswer.club && /usr/local/bin/pipenv run python manage.py delete_users >>/var/www/crons.log 2>&1
-# 0 3 * * * cd /var/www/rationalanswer.club && /usr/local/bin/pipenv run python manage.py renew_subscriptions >>/var/www/crons.log 2>&1
-0 9 * * 2-6 cd /var/www/rationalanswer.club && /usr/local/bin/pipenv run python manage.py send_daily_digest --production true >>/var/www/crons.log 2>&1
-0 11 * * 1 cd /var/www/rationalanswer.club && /usr/local/bin/pipenv run python manage.py send_weekly_digest --production true >>/var/www/crons.log 2>&1
-0 5 * * 7 cd /var/www/rationalanswer.club && /usr/local/bin/pipenv run python manage.py rebuild_search_index >>/var/www/crons.log 2>&1
-0 8 * * * cd /var/www/rationalanswer.club && /usr/local/bin/pipenv run python manage.py replay_stuck_reviews >>/var/www/crons.log 2>&1
-13 */3 * * * cd /var/www/rationalanswer.club && /usr/local/bin/pipenv run python manage.py update_hotness >>/var/www/crons.log 2>&1
+# 30 2 * * *  /var/www/backup.sh >> /var/www/backup.log 2>&1
+0 1 * * * docker exec club_app python3 manage.py delete_users >>/var/www/crons.log 2>&1
+# 0 3 * * * docker exec club_app python3 manage.py renew_subscriptions >>/var/www/crons.log 2>&1
+0 9 * * 2-6 docker exec club_app python3 manage.py send_daily_digest --production true >>/var/www/crons.log 2>&1
+0 11 * * 1 docker exec club_app python3 manage.py send_weekly_digest --production true >>/var/www/crons.log 2>&1
+0 5 * * 7 docker exec club_app python3 manage.py rebuild_search_index >>/var/www/crons.log 2>&1
+0 8 * * * docker exec club_app python3 manage.py replay_stuck_reviews >>/var/www/crons.log 2>&1
+13 */3 * * * docker exec club_app python3 manage.py update_hotness >>/var/www/crons.log 2>&1
