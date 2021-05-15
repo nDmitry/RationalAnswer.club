@@ -5,7 +5,7 @@
 }
 
     .menu-logo {
-        font-size: 26px;
+        font-size: 24px;
         font-weight: 700;
         text-decoration: none;
         white-space: nowrap;
@@ -22,8 +22,8 @@
         }
 
         .menu-logo img {
-            width: 1em;
-            height: 1em;
+            width: 1.2em;
+            height: 1.2em;
             vertical-align: middle;
             margin: 0 8px;
             position: relative;
