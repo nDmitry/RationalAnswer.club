@@ -15,6 +15,10 @@
             <div class="comment-form-body-title">{{ form.title }}</div>
             <div class="comment-form-body-text">{{ form.text }}</div>
             {% if form.text.errors %}<span class="form-errors">{{ form.full_name.errors }}</span>{% endif %}
+            <span class="form-row-help form-row-help-wide">
+                Можно использовать <a href="https://www.markdownguide.org/basic-syntax/" target="_blank" rel="nofollow noreferrer help">Markdown</a> и <a href="https://getemoji.com/" target="_blank" rel="nofollow noreferrer help">Emoji</a>.
+                Для загрузки картинок просто перетащите их в редактор.
+            </span>
         </div>
         <div class="comment-form-button">
             <button type="submit" class="button">Отправить</button>
