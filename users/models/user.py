@@ -189,6 +189,9 @@ class User(models.Model, ModelDiffMixin):
         return self.moderation_status == User.MODERATION_STATUS_REJECTED \
                and self.is_active
 
+    def is_curator(self):
+        return (self.roles and self.ROLE_CURATOR in self.roles) or self.is_god
+
     @property
     def is_club_member(self):
         return self.moderation_status == User.MODERATION_STATUS_APPROVED \

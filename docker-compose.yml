@@ -50,6 +50,7 @@ services:
       - postgres
       - redis
 
+  # Uncomment these lines if you want to test the bot locally
   bot:
     build:
       dockerfile: Dockerfile

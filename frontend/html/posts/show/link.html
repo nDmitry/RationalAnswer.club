@@ -22,8 +22,8 @@
             <header class="post-header">
                 <div class="post-title">
                     {% link_icon post %}
-
-                    &rarr; <a href="{{ post.url }}" target="_blank" class="p-name" rel="noopener">{{ post.title | rutypography }}</a>
+                    &rarr;
+                    <span class="p-name">{{ post.title | rutypography }}</span>
 
                     {% if not feature_public_content %}
                         <span class="post-is-public">
@@ -55,39 +55,24 @@
                     {% if post.topic %}
                         {% include "posts/widgets/topic.html" with topic=post.topic type="inline" %}
                     {% endif %}
-                    <div class="post-date">
-                        {{ post.effective_published_at|date:"j E Y" }}&nbsp;&nbsp;&nbsp;
-                        <i class="fas fa-eye"></i>&nbsp;{{ post.view_count }}&nbsp;&nbsp;&nbsp;
-                        {% if me %}
-                            <post-bookmark
-                                bookmark-url="{% url "toggle_post_bookmark" post.slug %}"
-                                {% if is_bookmark %}
-                                    initial-is-bookmarked
-                                {% endif %}>
-                            </post-bookmark>
-                        {% endif %}
-                        {% if post.author == me or me.is_moderator %}
-                            <a href="{% url "edit_post" post.slug %}"><i class="fas fa-edit"></i>&nbsp;Править&nbsp;&nbsp;&nbsp;</a>
-                        {% endif %}
-                        {% include "posts/widgets/delete_restore.html" %}
-                        {% if me.is_moderator %}
-                            <a href="{% url "announce_post" post.slug %}"><i class="fas fa-bullhorn"></i></a>&nbsp;&nbsp;&nbsp;
-                            <a href="{% url "admin_post" post.slug %}"><i class="fas fa-tools"></i></a>
-                        {% endif %}
+                    <div class="post-actions-line">
+                        {% include "posts/widgets/post_actions_line.html" %}
                     </div>
                 </div>
             </header>
             <section class="text-body text-body-type-post e-content">
+                {% if post.metadata %}
+                    {% link_summary post %}
+                {% else %}
+                    &rarr;&nbsp;<a href="{{ post.url }}" target="_blank" rel="noopener">{{ post.url }}</a>
+                {% endif %}
+
                 {% render_post post %}
             </section>
             <footer class="post-footer p-author">
                 {% include "users/widgets/small.html" with user=post.author created_at=post.created_at %}
             </footer>
         </article>
-
-        {% if post.metadata %}
-            {% link_summary post %}
-        {% endif %}
     </section>
     {% if linked_posts %}
         {% include "posts/widgets/linked_posts.html" %}

@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="post-date">
+        <div class="post-actions-line">
             {% if not feature_public_content %}
                 <span class="post-is-public">
                     {% if post.is_public %}
@@ -47,24 +47,7 @@
                     {% endif %}
                 </span>
             {% endif %}
-            {{ post.effective_published_at|date:"j E Y" }}&nbsp;&nbsp;&nbsp;
-            <i class="fas fa-eye"></i>&nbsp;{{ post.view_count }}&nbsp;&nbsp;&nbsp;
-            {% if me %}
-                <post-bookmark
-                    bookmark-url="{% url "toggle_post_bookmark" post.slug %}"
-                    {% if is_bookmark %}
-                        initial-is-bookmarked
-                    {% endif %}>
-                </post-bookmark>
-            {% endif %}
-            {% if post.author == me or me.is_moderator %}
-                <a href="{% url "edit_post" post.slug %}"><i class="fas fa-edit"></i>&nbsp;Править&nbsp;&nbsp;&nbsp;</a>
-            {% endif %}
-            {% include "posts/widgets/delete_restore.html" %}
-            {% if me.is_moderator %}
-                <a href="{% url "announce_post" post.slug %}"><i class="fas fa-bullhorn"></i></a>&nbsp;&nbsp;&nbsp;
-                <a href="{% url "admin_post" post.slug %}"><i class="fas fa-tools"></i></a>
-            {% endif %}
+            {% include "posts/widgets/post_actions_line.html" %}
         </div>
     </div>
 

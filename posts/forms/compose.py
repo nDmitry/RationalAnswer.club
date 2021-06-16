@@ -18,8 +18,10 @@ class PostForm(forms.ModelForm):
         empty_label="Для всех",
         queryset=Topic.objects.filter(is_visible=True).all(),
     )
-    is_public = forms.BooleanField(
+    is_public = forms.ChoiceField(
         label="Виден ли в большой интернет?",
+        choices=((True, "Публичный пост"), (False, "Только для своих")),
+        widget=forms.RadioSelect(attrs={"required": "required"}),
         initial=features.PUBLIC_CONTENT,
         required=False,
         disabled=not features.PUBLIC_CONTENT,
@@ -31,9 +33,9 @@ class PostForm(forms.ModelForm):
     def clean_topic(self):
         topic = self.cleaned_data["topic"]
 
-        if topic and not topic.is_visible_on_main_page:
+        if topic and not topic.is_visible_in_feeds:
             # topic settings are more important
-            self.instance.is_visible_on_main_page = False
+            self.instance.is_visible_in_feeds = False
 
         return topic
 
@@ -79,7 +81,6 @@ class PostLinkForm(PostForm):
         label="TL;DR",
         required=True,
         max_length=50000,
-        min_length=350,
         widget=forms.Textarea(
             attrs={
                 "minlength": 350,
@@ -88,7 +89,8 @@ class PostLinkForm(PostForm):
                 "data-listen": "keyup",
                 "placeholder": "Напишите TL;DR чтобы сэкономить другим время."
                                "\n\nКоротко расскажите о чем ссылка, перечислите основные моменты, "
-                               "которые вас зацепили, и почему каждый из нас должен пойти её прочитать.",
+                               "которые вас зацепили, и почему каждый из нас должен пойти её прочитать."
+                               "\n\nЕсли тема подразумевает дискуссию — задайте пару вопросов от себя.",
             }
         ),
     )
@@ -120,7 +122,7 @@ class PostQuestionForm(PostForm):
         label="Заголовок",
         required=True,
         max_length=128,
-        widget=forms.TextInput(attrs={"placeholder": "Вопрос коротко 🤔"}),
+        widget=forms.TextInput(attrs={"placeholder": "Вопрос кратко и четко 🤔"}),
     )
     text = forms.CharField(
         label="Развернутая версия",

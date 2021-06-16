@@ -64,7 +64,7 @@
                             {% elif user.email_digest_type == "weekly" %}
                                 Еженедельный журнал 💎
                             {% else %}
-                                Дайджест отключён ❌
+                                Дайджест и журнал отключёны ❌
                             {% endif %}
                         {% endif %}
                     </span>
@@ -79,6 +79,18 @@
                         {% endif %}
                     </span>
                 </a>
+            </div>
+        {% else %}
+            <div class="profile-statuses">
+                <div class="profile-friend-button">
+                    <friend-button
+                        url="{% url "toggle_friend" user.slug %}"
+                        {% if friend %}is-friend-by-default{% endif %}>
+                    </friend-button>
+                </div>
+                <div class="profile-friend-button-comment">
+                    &larr; тестируем бета-версию подписки на все посты и комменты юзера через бота
+                </div>
             </div>
         {% endif %}
 
@@ -151,6 +163,7 @@
                             {% endfor %}
                         </div>
                     </div>
+
                     {% if similarity %}
                         {% if tag_group.list.0.group == "personal" %}
                         <div class="profile-tags-footer">
@@ -162,6 +175,7 @@
                         </div>
                         {% endif %}
                     {% endif %}
+
                     {% if tag_group.list.0.group == "club" %}
                         <div class="profile-tags-footer">
                             {% if user.contact %}

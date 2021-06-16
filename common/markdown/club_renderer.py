@@ -1,5 +1,6 @@
 import mistune
 from mistune import escape_html
+from slugify import slugify
 
 from common.regexp import IMAGE_RE, VIDEO_RE, YOUTUBE_RE, TWITTER_RE, USERNAME_RE
 
@@ -13,6 +14,11 @@ class ClubRenderer(mistune.HTMLRenderer):
     def paragraph(self, text):
         text = text.replace("\n", "<br>\n")  # Mistune 2.0 broke newlines, let's hack it =/
         return f"<p>{text}</p>\n"
+
+    def heading(self, text, level):
+        tag = f"h{level}"
+        anchor = slugify(text[:24])
+        return f"<{tag} id=\"{anchor}\"><a href=\"#{anchor}\">{text}</a></{tag}>\n"
 
     def link(self, link, text=None, title=None):
         if not text and not title:
@@ -58,7 +64,9 @@ class ClubRenderer(mistune.HTMLRenderer):
         video_tag = (
             f'<span class="ratio-16-9">'
             f'<iframe loading="lazy" src="https://www.youtube.com/embed/{escape_html(youtube_match.group(1))}'
-            f'?autoplay=0&amp;controls=1&amp;showinfo=1&amp;vq=hd1080" frameborder="0"></iframe>'
+            f'?autoplay=0&amp;controls=1&amp;showinfo=1&amp;vq=hd1080"'
+            f'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"'
+            f'allowfullscreen></iframe>'
             f"</span>"
         )
         caption = f"<figcaption>{escape_html(title)}</figcaption>" if title else ""

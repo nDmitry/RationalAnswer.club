@@ -34,32 +34,30 @@
                 <div class="clearfix20"></div>
 
                 <div class="form-row">
-                    <div class="user-edit-digest">
-                        <div class="user-edit-digest">
-                            <div class="user-edit-digest-item">
-                                {{ form.email_digest_type.1.tag }}
-                                <label for="{{ form.email_digest_type.1.id_for_label }}" class="user-edit-digest-label">
-                                    <i class="fas fa-envelope-open"></i>
-                                    <span class="user-edit-digest-name">Дайджест каждый день</span>
-                                    <span class="user-edit-digest-description">+ гороскоп в подарок</span>
-                                </label>
-                            </div>
-                            <div class="user-edit-digest-item">
-                                {{ form.email_digest_type.2.tag }}
-                                <label for="{{ form.email_digest_type.2.id_for_label }}" class="user-edit-digest-label">
-                                    <i class="fas fa-calendar-week"></i>
-                                    <span class="user-edit-digest-name">Только журнал раз в неделю</span>
-                                    <span class="user-edit-digest-description">Подборка лучшего по понедельникам</span>
-                                </label>
-                            </div>
-                            <div class="user-edit-digest-item">
-                                {{ form.email_digest_type.0.tag }}
-                                <label for="{{ form.email_digest_type.0.id_for_label }}" class="user-edit-digest-label">
-                                    <i class="fas fa-skull-crossbones"></i>
-                                    <span class="user-edit-digest-name">Не надо никаких писем</span>
-                                    <span class="user-edit-digest-description">Я сам подпишусь где мне нравится</span>
-                                </label>
-                            </div>
+                    <div class="big-radio">
+                        <div class="big-radio-item">
+                            {{ form.email_digest_type.1.tag }}
+                            <label for="{{ form.email_digest_type.1.id_for_label }}" class="big-radio-label">
+                                <i class="fas fa-envelope-open"></i>
+                                <span class="big-radio-title">Дайджест каждый день</span>
+                                <span class="big-radio-description">+ гороскоп в подарок</span>
+                            </label>
+                        </div>
+                        <div class="big-radio-item">
+                            {{ form.email_digest_type.2.tag }}
+                            <label for="{{ form.email_digest_type.2.id_for_label }}" class="big-radio-label">
+                                <i class="fas fa-calendar-week"></i>
+                                <span class="big-radio-title">Только журнал раз в неделю</span>
+                                <span class="big-radio-description">Подборка лучшего по понедельникам</span>
+                            </label>
+                        </div>
+                        <div class="big-radio-item">
+                            {{ form.email_digest_type.0.tag }}
+                            <label for="{{ form.email_digest_type.0.id_for_label }}" class="big-radio-label">
+                                <i class="fas fa-skull-crossbones"></i>
+                                <span class="big-radio-title">Не надо никаких писем</span>
+                                <span class="big-radio-description">Я сам подпишусь где мне нравится</span>
+                            </label>
                         </div>
                     </div>
                     {% if form.email_digest_type.errors %}<span class="form-row-errors">{{ form.email_digest_type.errors }}</span>{% endif %}
@@ -74,8 +72,8 @@
                 <div class="block-description" style="text-align: left; padding-top: 40px;">
                     <a href="{{ settings.TELEGRAM_CLUB_CHANNEL_URL }}" rel="noreferrer" target="_blank" style="font-weight: bold;">Телеграм-канал Клуба</a> — туда модераторы отбирают лучший контент. Он же главный источник всех анонсов.<br><br>
                     <a href="{% url "network" %}" rel="noreferrer" target="_blank" style="font-weight: bold;">Секретные Чаты</a> — наша сеть чатов обо всём. Туда автоматически попадают тематические посты.<br><br>
-                    <a href="{{ settings.TELEGRAM_ONLINE_CHANNEL_URL }}" target="_blank" style="font-weight: bold;">Онлайн</a> — прямой эфир всего. Только для самых хардкорных.<br><br>
-                    <strong>RSS:</strong> <a href="{% url "rss" %}">rationalanswer.club/posts.rss</a> <a href="https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Frationalanswer.club%2Fposts.rss" target="_blank" style="font-weight: bold;">[добавить в Feedly]</a><br><br>
+                    <a href="{{ settings.TELEGRAM_ONLINE_CHANNEL_URL }}" rel="noreferrer" target="_blank" style="font-weight: bold;">Онлайн</a> — прямой эфир всего. Только для самых хардкорных.<br><br>
+                    <strong>RSS:</strong> <a href="{% url "rss" %}">rationalanswer.club/posts.rss</a> <a href="https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Frationalanswer.club%2Fposts.rss" rel="noreferrer" target="_blank" style="font-weight: bold;">[добавить в Feedly]</a><br><br>
                     <a href="{% url "edit_bot" user.slug %}" target="_blank" style="font-weight: bold;">Подключите нашего бота</a> — он будет приносить уведомления, касающиеся лично вас.
                 </div>
             </div>
