@@ -1,4 +1,6 @@
+import html
 import mistune
+from urllib.parse import unquote
 from mistune import escape_html
 from slugify import slugify
 
@@ -27,7 +29,12 @@ class ClubRenderer(mistune.HTMLRenderer):
             if embed:
                 return embed
 
-        return super().link(link, text, title)
+        if text is None:
+            text = link
+
+        # here's some magic of unescape->unquote->escape
+        # to fix cyrillic (and other non-latin) wikipedia URLs
+        return f'<a href="{self._safe_url(link)}">{html.escape(unquote(html.unescape(text or link)))}</a>'
 
     def image(self, src, alt="", title=None):
         embed = self.embed(src, alt, title)

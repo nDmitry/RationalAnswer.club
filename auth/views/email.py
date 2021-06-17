@@ -37,7 +37,7 @@ def email_login(request):
                 "message": "Пользователь с таким кодом не найден. "
                            "Попробуйте авторизоваться по обычной почте" + \
                                "." if features.EMAIL_SIGN_UP else " или юзернейму.",
-            })
+            }, status=404)
 
         if user.deleted_at:
             # cancel user deletion
@@ -70,7 +70,7 @@ def email_login(request):
                 return render(request, "error.html", {
                     "title": "Что-то пошло не так 🤔",
                     "message": "Напишите нам, и мы всё починим. Или попробуйте ещё раз.",
-                })
+                }, status=404)
         else:
             # email/nickname login
             user = User.objects.filter(Q(email=email_or_login.lower()) | Q(slug=email_or_login)).first()
@@ -81,7 +81,7 @@ def email_login(request):
                     "message": "Пользователь с такой почтой не найден в списке членов Клуба. "
                             "Попробуйте другую почту или никнейм. "
                             "Если совсем ничего не выйдет, напишите нам, попробуем помочь.",
-                })
+                }, status=404)
 
         code = Code.create_for_user(user=user, recipient=user.email, length=settings.AUTH_CODE_LENGTH)
         async_task(send_auth_email, user, code)
