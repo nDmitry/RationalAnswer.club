@@ -33,7 +33,7 @@ Consider next required conditions for running tests:
   $ npm ci # or npm install
   $ npm run build
   ```
-  Above commands will create [required `webpack-stats.json`](https://github.com/nDmitry/RationalAnswer/blob/6f1812f36b546feba2bd729ac84011e20e237136/club/settings.py#L228) file
+  Above commands will create [required `webpack-stats.json`](https://github.com/nDmitry/RationalAnswer.club/blob/6f1812f36b546feba2bd729ac84011e20e237136/club/settings.py#L228) file
 - test environment variables
   ```dotenv
   DJANGO_SETTINGS_MODULE=club.settings;

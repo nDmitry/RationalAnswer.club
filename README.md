@@ -17,7 +17,7 @@ Feel free to propose "state of the art" refactorings for UI or backend code if y
 2. Clone the repo
 
     ```sh
-    $ git clone https://github.com/nDmitry/RationalAnswer.git
+    $ git clone https://github.com/nDmitry/RationalAnswer.club.git
     $ cd RationalAnswer
     ```
 
@@ -58,17 +58,17 @@ These pipelines are made as github-actions. Explore the [.github](.github) folde
 
 Contributions are welcome.
 
-The main point of interaction is the [Issues page](https://github.com/nDmitry/RationalAnswer/issues).
+The main point of interaction is the [Issues page](https://github.com/nDmitry/RationalAnswer.club/issues).
 
 Our CI/CD pipelines have to take all the dirty work. They build, test and deploy changes to production on every merge to master (only official maintainers can do it).
 
-We also run the public [Github Project Board](https://github.com/nDmitry/RationalAnswer/projects/1) to track progress and develop roadmaps.
+We also run the public [Github Project Board](https://github.com/nDmitry/RationalAnswer.club/projects/1) to track progress and develop roadmaps.
 
 We're open for proposals on how to improve our deployments without overcomplicating it with modern devops bullshit.
 
 ## 🙋‍♂️ How to report a bug or propose a feature?
 
-- 🆕Open [a new issue](https://github.com/nDmitry/RationalAnswer/issues/new).
+- 🆕Open [a new issue](https://github.com/nDmitry/RationalAnswer.club/issues/new).
   - 🔦 Please **use the search** to check if there is an already existing issue!
 - Explain your idea or proposal in all the details:
   - If it's a **new feature**:
@@ -93,7 +93,7 @@ We also run the public [Github Project Board](https://github.com/vas3k/vas3k.clu
 
 ### 😎 I want to write some code
 
-- Open our [Issues page](https://github.com/nDmitry/RationalAnswer/issues) to see the most important tickets at top.
+- Open our [Issues page](https://github.com/nDmitry/RationalAnswer.club/issues) to see the most important tickets at top.
 - Pick one issue you like and **leave a comment** inside that you're getting it.
 
 **For big changes** open an issues first or (if it's already opened) leave a comment with brief explanation what and why you're going to change. Many tickets hang open not because they cannot be done, but because they cause many logical contradictions that you may not know. It's better to clarify them in comments before sending a PR.
@@ -127,9 +127,9 @@ Please do not test vulnerabilities in public. If you start spamming the website 
 
 ## 👍 Our top contributors
 
-First of all, this is a fork of another [project](https://github.com/nDmitry/RationalAnswer) originally developed by [@vas3k](https://github.com/vas3k). So thanks to him and their top contributors for the great amount of work done!
+First of all, this is a fork of another [project](https://github.com/nDmitry/RationalAnswer.club) originally developed by [@vas3k](https://github.com/vas3k). So thanks to him and their top contributors for the great amount of work done!
 
-Take some time to press F and give some respects to our [best contributors](https://github.com/nDmitry/RationalAnswer/graphs/contributors), who spent their own time to make the club better.
+Take some time to press F and give some respects to our [best contributors](https://github.com/nDmitry/RationalAnswer.club/graphs/contributors), who spent their own time to make the club better.
 
 - [@nDmitry](https://github.com/nDmitry)
 
