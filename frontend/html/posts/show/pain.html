@@ -19,7 +19,7 @@
             </post-upvote>
         </div>
         <header class="post-header">
-            <div class="post-title">
+            <h1 class="post-title">
                 <span class="p-name">Боль: {{ post.title | rutypography }}</span>
 
                 {% if not feature_public_content %}
@@ -47,7 +47,7 @@
                         {% include "posts/widgets/draft_label.html" %}
                     </div>
                 {% endif %}
-            </div>
+            </h1>
             <div class="post-info">
                 {% if post.topic %}
                     {% include "posts/widgets/topic.html" with topic=post.topic type="inline" %}
