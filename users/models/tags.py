@@ -7,6 +7,7 @@ from users.models.user import User
 
 
 class Tag(models.Model):
+    GROUP_FINANCE = "finance"
     GROUP_HOBBIES = "hobbies"
     GROUP_PERSONAL = "personal"
     GROUP_TECH = "tech"
@@ -14,6 +15,7 @@ class Tag(models.Model):
     GROUP_OTHER = "other"
     GROUPS = [
         (GROUP_PERSONAL, "О себе"),
+        (GROUP_FINANCE, "Финансы"),
         (GROUP_TECH, "Технологии"),
         (GROUP_CLUB, "Для других членов Клуба я..."),
         (GROUP_HOBBIES, "Хобби"),

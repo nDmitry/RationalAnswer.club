@@ -102,6 +102,18 @@
                         </div>
                     {% endfor %}
 
+                    <div class="people-filters-header">Финансы</div>
+
+                    {% for tag in tag_stat_groups.finance %}
+                        <div class="people-filters-tag">
+                            <input type="checkbox" name="tags" value="{{ tag.code }}" id="tag_{{ tag.code }}" {% if tag.code in people_query.tags %}checked{% endif %}>
+                            <label for="tag_{{ tag.code }}">
+                                {{ tag.name }}
+                                <div class="people-filters-tag-bar" style="width: {{ tag.user_count | percentage_of:max_tag_user_count }}%;"></div>
+                            </label>
+                        </div>
+                    {% endfor %}
+
                     <div class="people-filters-header">Профессиональное</div>
 
                     {% for tag in tag_stat_groups.work %}
