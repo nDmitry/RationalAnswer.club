@@ -35,11 +35,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{% url "feed_label" "thread" %}" class="{% if label_code == "thread" %}feed-sidebar-menu-selected{% endif %}">
-                        🗄 Треды
-                    </a>
-                </li>
-                <li>
                     <a href="{% url "feed_type" "question" %}" class="{% if post_type == "question" %}feed-sidebar-menu-selected{% endif %}">
                         🤔 Вопросы
                     </a>
@@ -51,7 +46,12 @@
                 </li>
                 <li>
                     <a href="{% url "feed_label" "approved" %}" class="{% if label_code == "approved" %}feed-sidebar-menu-selected{% endif %}">
-                        👍 Офигенно
+                        👍 Рекомендуем
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url "feed_label" "fire" %}" class="{% if label_code == "fire" %}feed-sidebar-menu-selected{% endif %}">
+                        🔥 FI/RE
                     </a>
                 </li>
             </ul>
