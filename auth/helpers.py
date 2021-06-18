@@ -72,17 +72,14 @@ def check_user_permissions(request, **context):
     if request.me:
         public_paths.extend(["/profile/", "/auth/", "/intro/", "/network/", "/messages/"])
 
-    if features.PUBLIC_CONTENT and (not request.me or request.me.moderation_status != User.MODERATION_STATUS_INTRO):
+    if features.PUBLIC_CONTENT:
         public_pages.append("/")
-        public_paths.extend(["/network/", "/search/", "/room/", "/telegram/", "/all/"])
-        public_paths.extend(["/{}/".format(t) for t in dict(Post.TYPES).keys()])
+        public_paths.extend(["/network/", "/search/", "/room/", "/telegram/", "/all/", "/user/"])
+        public_paths.extend(["/{}/".format(t) for t in dict(Post.TYPES).keys()]) # including intros
+        public_paths.append("/label/")
 
-        if request.me:
-            public_paths.append("/user/" + request.me.slug + "/")
-        else:
-            public_paths.remove("/intro/") # was added from Post.TYPES
-
-    is_public = request.path in public_pages or len([p for p in public_paths if request.path.startswith(p)]) > 0
+    is_public = request.path in public_pages or \
+        len([p for p in public_paths if request.path.startswith(p)]) > 0
 
     if is_public:
         return None
