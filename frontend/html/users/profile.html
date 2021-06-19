@@ -122,6 +122,15 @@
                     </a>
                 </div>
             </div>
+        {% else %}
+            <div class="block profile-intro">
+                <div class="profile-header">
+                    <a href="{% url "intro" %}">Интро ✏️</a>
+                </div>
+                <div class="text-body profile-intro-text">
+                    Чтобы стать участником Клуба, нужно <a href="{% url "intro" %}">заполнить</a> небольшое интро о себе.
+                </div>
+            </div>
         {% endif %}
 
         {% if achievements %}
