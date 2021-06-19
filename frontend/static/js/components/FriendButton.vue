@@ -1,8 +1,8 @@
 <template>
     <span>
         <button class="button friend-button" @click="toggle">
-            <span v-if="isFriend" class="friend-button-text">✅ Мой чувак</span>
-            <span v-else class="friend-button-text">🤝 Добавить в мои чуваки</span>
+            <span v-if="isFriend" class="friend-button-text">✅ Вы подписаны</span>
+            <span v-else class="friend-button-text">🤝 Подписаться</span>
         </button>
     </span>
 </template>
