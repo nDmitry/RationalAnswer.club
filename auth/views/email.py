@@ -117,5 +117,9 @@ def email_login_code(request):
         user.save()
 
     redirect_to = reverse("profile", args=[user.slug]) if not goto else goto
+
+    if user.moderation_status == user.MODERATION_STATUS_INTRO:
+        redirect_to = reverse("intro")
+
     response = redirect(redirect_to)
     return set_session_cookie(response, user, session)
