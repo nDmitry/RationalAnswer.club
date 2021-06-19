@@ -122,7 +122,7 @@
                     </a>
                 </div>
             </div>
-        {% else %}
+        {% elif me.id == user.id %}
             <div class="block profile-intro">
                 <div class="profile-header">
                     <a href="{% url "intro" %}">Интро ✏️</a>
