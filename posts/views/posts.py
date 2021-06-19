@@ -209,7 +209,8 @@ def create_or_edit(request, post_type, post=None, mode="create"):
         form = FormClass(instance=post)
         return render(request, f"posts/compose/{post_type}.html", {
             "mode": mode,
-            "form": form
+            "form": form,
+            "feature_public_content": features.PUBLIC_CONTENT,
         })
 
     # validate form on POST

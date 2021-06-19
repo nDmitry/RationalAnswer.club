@@ -1,3 +1,4 @@
+{% if not feature_public_content %}
 {% if mode == "create" or form.instance.is_public or form.instance.comment_count < 10 or form.instance.published_at is None or me.is_moderator %}
 <div class="big-radio compose-visibility">
     <div class="big-radio-item">
@@ -25,4 +26,5 @@
         </label>
     </div>
 </div>
+{% endif %}
 {% endif %}
