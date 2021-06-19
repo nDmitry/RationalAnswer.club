@@ -34,8 +34,9 @@ class ProfileEditForm(ModelForm):
     )
     company = forms.CharField(
         label="Компания",
-        required=True,
-        max_length=128
+        required=False,
+        max_length=128,
+        widget=forms.TextInput(attrs={'placeholder': '(не обязательно)'})
     )
     position = forms.CharField(
         label="Должность или что вы делаете",
