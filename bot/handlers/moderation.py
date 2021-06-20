@@ -1,3 +1,4 @@
+from club import features
 import logging
 from datetime import datetime
 
@@ -33,6 +34,8 @@ def approve_post(update: Update, context: CallbackContext) -> None:
     post.last_activity_at = datetime.utcnow()
     if not post.published_at:
         post.published_at = datetime.utcnow()
+    if features.PUBLIC_CONTENT:
+        post.is_public = True
     post.save()
 
     notify_post_author_approved(post)
@@ -131,6 +134,8 @@ def approve_user_profile(update: Update, context: CallbackContext) -> None:
     intro.is_visible = True
     if not intro.published_at:
         intro.published_at = datetime.utcnow()
+    if features.PUBLIC_CONTENT:
+        intro.is_public = True
     intro.save()
 
     SearchIndex.update_user_index(user)
