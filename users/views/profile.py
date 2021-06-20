@@ -1,8 +1,7 @@
 from django.conf import settings
-from django.http import Http404
+from django.http import HttpResponseForbidden, Http404
 from django.shortcuts import redirect, get_object_or_404, render
 
-from club import features
 from auth.helpers import auth_required
 from comments.models import Comment
 from common.pagination import paginate
@@ -20,24 +19,21 @@ from users.utils import calculate_similarity
 
 @auth_required
 def profile(request, user_slug):
-    if user_slug == "me":
+    if request.me and user_slug == "me":
         return redirect("profile", request.me.slug, permanent=False)
 
     user = get_object_or_404(User, slug=user_slug)
 
-    if not request.me:
-        raise Http404()
-
-    if not request.me.is_moderator:
+    if not request.me or not request.me.is_moderator:
         # hide unverified and deleted users
         if user.deleted_at:
             raise Http404()
 
-        if not features.PUBLIC_CONTENT and user.moderation_status != User.MODERATION_STATUS_APPROVED:
+        if request.me and request.me.id != user.id and user.moderation_status != User.MODERATION_STATUS_APPROVED:
             raise Http404()
 
     # handle auth redirect
-    if user.id == request.me.id:
+    if request.me and user.id == request.me.id:
         goto = request.GET.get("goto")
         if goto and goto.startswith(settings.APP_HOST):
             return redirect(goto)
@@ -46,7 +42,7 @@ def profile(request, user_slug):
     tags = Tag.objects.filter(is_visible=True).all()
     active_tags = {t.tag_id for t in UserTag.objects.filter(user=user).all()}
     similarity = {}
-    if user.id != request.me.id:
+    if request.me and user.id != request.me.id:
         my_tags = {t.tag_id for t in UserTag.objects.filter(user=request.me).all()}
         similarity = calculate_similarity(my_tags, active_tags, tags)
 
@@ -59,11 +55,13 @@ def profile(request, user_slug):
         .filter(author=user, post__is_visible=True)\
         .order_by("-created_at")\
         .select_related("post")
+
     posts = Post.objects_for_user(request.me)\
         .filter(author=user, is_visible=True)\
         .exclude(type__in=[Post.TYPE_INTRO, Post.TYPE_PROJECT, Post.TYPE_WEEKLY_DIGEST])\
-        .order_by("-published_at")
-    friend = Friend.objects.filter(user_from=request.me, user_to=user).first()
+        .order_by("-published_at") if request.me else Post.objects.none()
+    friend = Friend.objects.filter(user_from=request.me, user_to=user).first() \
+        if request.me else Friend.objects.none()
 
     return render(request, "users/profile.html", {
         "user": user,
@@ -84,7 +82,7 @@ def profile(request, user_slug):
 
 @auth_required
 def profile_comments(request, user_slug):
-    if user_slug == "me":
+    if request.me and user_slug == "me":
         return redirect("profile_comments", request.me.slug, permanent=False)
 
     user = get_object_or_404(User, slug=user_slug)
@@ -102,7 +100,7 @@ def profile_comments(request, user_slug):
 
 @auth_required
 def profile_posts(request, user_slug):
-    if user_slug == "me":
+    if request.me and user_slug == "me":
         return redirect("profile_posts", request.me.slug, permanent=False)
 
     user = get_object_or_404(User, slug=user_slug)
@@ -110,7 +108,7 @@ def profile_posts(request, user_slug):
     posts = Post.objects_for_user(request.me) \
         .filter(author=user, is_visible=True) \
         .exclude(type__in=[Post.TYPE_INTRO, Post.TYPE_PROJECT, Post.TYPE_WEEKLY_DIGEST]) \
-        .order_by("-published_at")
+        .order_by("-published_at") if request.me else Post.objects.none()
 
     return render(request, "users/profile/posts.html", {
         "user": user,
@@ -121,6 +119,9 @@ def profile_posts(request, user_slug):
 @auth_required
 @ajax_request
 def toggle_tag(request, tag_code):
+    if not request.me:
+        raise HttpResponseForbidden()
+
     if request.method != "POST":
         raise Http404()
 
@@ -144,6 +145,9 @@ def toggle_tag(request, tag_code):
 @auth_required
 @ajax_request
 def add_expertise(request):
+    if not request.me:
+        raise HttpResponseForbidden()
+
     if request.method == "POST":
         form = ExpertiseForm(request.POST)
         if form.is_valid():
@@ -169,6 +173,9 @@ def add_expertise(request):
 @auth_required
 @ajax_request
 def delete_expertise(request, expertise):
+    if not request.me:
+        raise HttpResponseForbidden()
+
     if request.method == "POST":
         UserExpertise.objects.filter(user=request.me, expertise=expertise).delete()
 
