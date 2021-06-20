@@ -1,6 +1,6 @@
 def calculate_similarity(my, theirs, tags):
     similarity = {}
-    for group in ('personal', 'hobbies'):
+    for group in ('personal', 'finance', 'hobbies'):
         all_names = {tag.code for tag in tags if tag.group == group}
         my_names = all_names & my
         their_names = all_names & theirs
