@@ -716,6 +716,18 @@ img.emoji {
         width: 50%;
         max-width: 220px;
         min-height: 250px;
+        margin-bottom: 14px;
+    }
+
+    @media only screen and (max-width : 767px) {
+        .big-radio {
+            flex-direction: column;
+        }
+
+            .big-radio-item {
+                width: 95%;
+                max-width: 95%;
+            }
     }
 
     .big-radio-label {
