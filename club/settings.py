@@ -230,10 +230,10 @@ MEDIA_UPLOAD_CODE = os.getenv("MEDIA_UPLOAD_CODE")
 VIDEO_EXTENSIONS = {"mp4", "mov", "webm"}
 IMAGE_EXTENSIONS = {"jpg", "jpeg", "png", "gif"}
 
-OG_IMAGE_GENERATOR_URL = "https://og.vas3k.club/preview"
-OG_IMAGE_DEFAULT = "https://vas3k.club/static/images/share.png"
+OG_IMAGE_GENERATOR_URL = "https://i.rationalanswer.club/preview"
+OG_IMAGE_DEFAULT = "https://rationalanswer.club/static/images/share.png"
 OG_IMAGE_GENERATOR_DEFAULTS = {
-    "logo": "https://vas3k.club/static/images/logo/logo-white-text.png",
+    "logo": "https://rationalanswer.club/static/images/logo/logo-white-text.png",
     "op": 0.6,
     "bg": "#FFFFFF",
 }
