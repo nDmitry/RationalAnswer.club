@@ -433,22 +433,26 @@
         table-layout: fixed;
         border-spacing: 10px;
         border-collapse: collapse;
+        font-size: 80%;
     }
 
         .text-body table thead {
-            text-align: left;
-            font-size: 120%;
+            text-align: center;
         }
 
             .text-body table thead th {
-                padding-bottom: 30px;
+                vertical-align: middle;
             }
+
+        .text-body table td, .text-body table th {
+            padding: 2px 8px;
+            box-sizing: border-box;
+            border: 1px solid var(--opposite-block-bg-color);
+        }
 
         .text-body table td {
             width: 1%;
-            padding: 0 50px 30px 0;
             vertical-align: top;
-            box-sizing: border-box;
         }
 
     .text-body-type-comment {

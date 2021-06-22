@@ -206,6 +206,12 @@ const App = {
                             className: "fas fa-code",
                             title: "Вставить код",
                         },
+                        {
+                            name: "table",
+                            action: EasyMDE.drawTable,
+                            className: "fas fa-table",
+                            title: "Вставить таблицу",
+                        },
                     ],
                 });
 

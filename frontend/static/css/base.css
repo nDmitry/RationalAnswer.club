@@ -786,3 +786,14 @@ img.emoji {
             display: block;
             padding: 10px;
         }
+
+.table-responsive {
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+    .table-responsive table {
+        width: 100%;
+        min-width: 700px;
+    }

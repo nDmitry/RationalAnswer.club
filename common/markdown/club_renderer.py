@@ -92,3 +92,6 @@ class ClubRenderer(mistune.HTMLRenderer):
                       f'<a href="{tweet_match.group(1)}"></a></blockquote><br>' \
                       f'<a href="{src}" target="_blank">{src}</a>'
         return twitter_tag
+
+    def table(self, html):
+        return f'<div class="table-responsive"><table>{html}</table></div>'

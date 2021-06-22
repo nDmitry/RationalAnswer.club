@@ -20,3 +20,6 @@ class EmailRenderer(ClubRenderer):
 
     def tweet(self, src, alt="", title=None):
         return f'<a href="{escape_html(src)}">{escape_html(src)}</a><br>{escape_html(title) or ""}'
+
+    def table(self, html):
+        return f'<table>{html}</table>'
