@@ -163,10 +163,16 @@ const App = {
                             title: "Курсив",
                         },
                         {
-                            name: "header",
-                            action: EasyMDE.toggleHeadingSmaller,
-                            className: "fas fa-heading",
-                            title: "Заголовок",
+                            name: "heading-2",
+                            action: EasyMDE.toggleHeading2,
+                            className: "fas fa-heading header-2",
+                            title: "Заголовок второго уровня",
+                        },
+                        {
+                            name: "heading-3",
+                            action: EasyMDE.toggleHeading3,
+                            className: "fas fa-heading header-3",
+                            title: "Заголовок третьего уровня",
                         },
                         "|",
                         {
