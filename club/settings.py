@@ -168,7 +168,7 @@ DEFAULT_FROM_EMAIL = "Клуб RationalAnswer <contact@rationalanswer.club>"
 APP_HOST = os.environ.get("APP_HOST") or "http://127.0.0.1:8000"
 APP_NAME = "RationalAnswer"
 APP_DESCRIPTION = "Ищем разумные ответы на вопросы вместе"
-LAUNCH_DATE = datetime(2020, 4, 13)
+LAUNCH_DATE = datetime(2021, 6, 20)
 
 AUTH_CODE_LENGTH = 6
 AUTH_CODE_EXPIRATION_TIMEDELTA = timedelta(minutes=15)
