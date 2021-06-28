@@ -7,7 +7,7 @@ class PublicPostsSitemap(Sitemap):
     protocol = "https"
 
     def items(self):
-        return Post.visible_objects().filter(is_public=True)
+        return Post.visible_objects().filter(is_public=True).exclude(type__in=[Post.TYPE_INTRO])
 
     def lastmod(self, obj: Post):
         return obj.updated_at
