@@ -10,8 +10,8 @@ def command_auth(update: Update, context: CallbackContext) -> None:
     if not update.message or not update.message.text or " " not in update.message.text:
         update.effective_chat.send_message(
             "☝️ Нужно прислать мне секретный код. "
-            "Напиши /auth и код из <a href=\"https://rationalanswer.club/user/me/edit/bot/\">профиля в Клубе</a> "
-            "через пробел. Только не публикуй его в публичных чатах!",
+            "Напишите /auth и код из <a href=\"https://rationalanswer.club/user/me/edit/bot/\">профиля в Клубе</a> "
+            "через пробел. Только не публикуйте его в публичных местах!",
             parse_mode=ParseMode.HTML
         )
         return None

@@ -30,21 +30,21 @@ def get_club_user(update: Update):
     user = User.objects.filter(telegram_id=update.effective_user.id).first()
     if not user:
         update.message.reply_text(
-            f"😐 Привяжи <a href=\"https://rationalanswer.club/user/me/edit/bot/\">бота</a> к профилю, братишка",
+            f"😐 Привяжите <a href=\"https://rationalanswer.club/user/me/edit/bot/\">бота</a> к профилю, пожалуйста",
             parse_mode=ParseMode.HTML
         )
         return None
 
     if user.is_banned:
-        update.message.reply_text(f"🙈 Ты в бане, мы больше не дружим")
+        update.message.reply_text(f"🙈 Вы в бане, мы больше не дружим")
         return None
 
     if features.PUBLIC_CONTENT and not user.is_active:
-        update.message.reply_text(f"😣 Твой профиль в Клубе неактивен")
+        update.message.reply_text(f"😣 Ваш профиль в Клубе неактивен")
         return None
 
     if not features.PUBLIC_CONTENT and not user.is_club_member:
-        update.message.reply_text(f"😣 Твой профиль в Клубе неактивен. Плоти долор!")
+        update.message.reply_text(f"😣 Ваш профиль в Клубе неактивен")
         return None
 
     return user
@@ -90,7 +90,7 @@ def get_club_post(update: Update) -> Optional[Post]:
 
     post = Post.objects.filter(slug=post_id).first()
     if not post or not post.is_commentable:
-        update.message.reply_text(f"🤨 Пост был удален, скрыт или украден, сорян")
+        update.message.reply_text(f"🤨 Пост был удален, скрыт или украден, извините")
         return None
 
     return post

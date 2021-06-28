@@ -12,7 +12,7 @@ from posts.models.post import Post
 
 log = logging.getLogger(__name__)
 
-MIN_COMMENT_LEN = 140
+MIN_COMMENT_LEN = 70
 
 
 def comment(update: Update, context: CallbackContext) -> None:
@@ -53,7 +53,7 @@ def reply_to_comment(update: Update, context: CallbackContext) -> None:
     text = update.message.text or update.message.caption
     if not text:
         update.message.reply_text(
-            f"😣 Сорян, я пока умею только в текстовые реплаи"
+            f"😣 Извините, я пока умею только текстовые реплаи"
         )
         return None
 
@@ -104,13 +104,13 @@ def comment_to_post(update: Update, context: CallbackContext) -> None:
     text = update.message.text or update.message.caption
     if not text:
         update.message.reply_text(
-            f"😣 Сорян, я пока умею только в текстовые реплаи"
+            f"😣 Извините, я пока умею только текстовые реплаи"
         )
         return None
 
     if len(text) < MIN_COMMENT_LEN:
         update.message.reply_text(
-            f"😋 Твой коммент слишком короткий. Не буду постить его в Клуб, пускай остается в чате"
+            f"😋 Ваш коммент слишком короткий, он не появится в Клубе"
         )
         return None
 

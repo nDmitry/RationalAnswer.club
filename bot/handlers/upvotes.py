@@ -44,9 +44,9 @@ def upvote_comment(update: Update, context: CallbackContext) -> None:
     )
 
     if is_created:
-        update.message.reply_text(f"Заплюсовано 👍")
+        update.message.reply_text(f"Плюс отправлен 👍")
     else:
-        update.message.reply_text(f"Ты уже плюсовал, поц")
+        update.message.reply_text(f"Вы уже плюсовали")
 
 
 @is_club_member
@@ -65,6 +65,6 @@ def upvote_post(update: Update, context: CallbackContext) -> None:
     )
 
     if is_created:
-        update.message.reply_text(f"Заплюсовано 👍")
+        update.message.reply_text(f"Плюс отправлен 👍")
     else:
-        update.message.reply_text(f"Ты уже плюсовал, поц")
+        update.message.reply_text(f"Вы уже плюсовали")
