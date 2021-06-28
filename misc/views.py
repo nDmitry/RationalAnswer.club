@@ -34,9 +34,13 @@ def robots(request):
         "User-agent: *",
         "Sitemap: https://rationalanswer.club/sitemap.xml",
         "Host: https://rationalanswer.club",
+        "Disallow: /auth/",
         "Disallow: /intro/",
         "Disallow: /user/",
         "Disallow: /people/",
+        "Disallow: *&",
+        "Disallow: *?",
+        "Disallow: *=",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
