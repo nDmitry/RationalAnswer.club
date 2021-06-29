@@ -40,6 +40,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{% url "feed_type" "battle" %}" class="{% if post_type == "question" %}feed-sidebar-menu-selected{% endif %}">
+                        🤜 Баттлы
+                    </a>
+                </li>
+                <li>
                     <a href="{% url "feed_type" "link" %}" class="{% if post_type == "link" %}feed-sidebar-menu-selected{% endif %}">
                         🔗 Ссылки
                     </a>
@@ -47,11 +52,6 @@
                 <li>
                     <a href="{% url "feed_label" "approved" %}" class="{% if label_code == "approved" %}feed-sidebar-menu-selected{% endif %}">
                         👍 Рекомендуем
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url "feed_label" "fire" %}" class="{% if label_code == "fire" %}feed-sidebar-menu-selected{% endif %}">
-                        🔥 FI/RE
                     </a>
                 </li>
             </ul>
