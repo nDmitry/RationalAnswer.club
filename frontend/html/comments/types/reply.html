@@ -58,9 +58,11 @@
             <a href="{% url "edit_comment" comment.id %}" class="comment-edit-button reply-button-hidden"><i class="fas fa-edit"></i></a>
         {% endif %}
 
+        {% if me and me.is_club_member and comment.post.is_commentable %}
         <span class="comment-reply-button" v-on:click="showReplyForm('{{ reply_to.id }}', '{{ comment.author.slug }}', true)">
             <i class="fas fa-reply"></i>&nbsp;ответить
         </span>
+        {% endif %}
     </div>
     <div class="reply-replies thread-collapse-toggle">
         {% if replies %}
