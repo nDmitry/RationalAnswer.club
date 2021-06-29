@@ -8,7 +8,7 @@
         {% include "comments/types/normal.html" with comment=tree.comment replies=tree.replies %}
     {% endif %}
 
-    {% if post.is_commentable and me %}
+    {% if post.is_commentable and me and me.is_club_member %}
         {% include "comments/forms/reply.html" with comment=tree.comment reply_form=reply_form %}
     {% endif %}
 {% endfor %}

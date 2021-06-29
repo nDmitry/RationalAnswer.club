@@ -69,7 +69,7 @@
                 {% for reply_tree in replies %}
                     {% include "comments/types/reply.html" with comment=reply_tree.comment reply_to=reply_tree.comment replies=reply_tree.replies %}
 
-                    {% if post.is_commentable and me %}
+                    {% if post.is_commentable and me and me.is_club_member %}
                         {% include "comments/forms/reply.html" with comment=reply_tree.comment reply_form=reply_form %}
                     {% endif %}
                 {% endfor %}

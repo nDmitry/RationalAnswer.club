@@ -109,7 +109,7 @@
             </div>
         {% endif %}
 
-        {% if me and post.is_commentable and post.is_visible or me.is_moderator %}
+        {% if me and me.is_club_member and post.is_commentable and post.is_visible or me.is_moderator %}
             <div class="post-comments-form">
                 {% include "comments/forms/battle.html" with post=post form=comment_form %}
             </div>
