@@ -1,6 +1,7 @@
 const path = require("path");
 const BundleTracker = require("webpack-bundle-tracker");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 
@@ -57,6 +58,12 @@ module.exports = {
                 loader: "vue-loader"
             }
         ]
+    },
+    optimization: {
+        minimizer: [
+            '...',
+            new CssMinimizerPlugin(),
+        ],
     },
     devtool: "source-map",
     resolve: {
