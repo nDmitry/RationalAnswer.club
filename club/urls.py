@@ -4,7 +4,7 @@ from django.urls import path, include, re_path
 
 from club import features
 from auth.helpers import auth_switch
-from auth.views.auth import login, logout, debug_dev_login, debug_random_login, join
+from auth.views.auth import login, logout, debug_dev_login, debug_random_login, debug_random_intro, join
 from auth.views.email import email_login, email_login_code
 from auth.views.external import external_login
 from auth.views.patreon import patreon_login, patreon_oauth_callback
@@ -125,6 +125,7 @@ urlpatterns = [
     path("godmode/", god_settings, name="god_settings"),
     path("godmode/dev_login/", debug_dev_login, name="debug_dev_login"),
     path("godmode/random_login/", debug_random_login, name="debug_random_login"),
+    path("godmode/random_intro/", debug_random_intro, name="debug_random_intro"),
 
     # misc
     path("misc/calendar/ical", generate_ical_invite, name="generate_ical_invite"),

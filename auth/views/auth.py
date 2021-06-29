@@ -105,3 +105,31 @@ def debug_random_login(request):
     session = Session.create_for_user(user)
 
     return set_session_cookie(redirect("profile", user.slug), user, session)
+
+def debug_random_intro(request):
+    if not (settings.DEBUG or settings.TESTS_RUN):
+        raise AccessDenied(title="Эта фича доступна только при DEBUG=true")
+
+    slug = "random_" + random_string()
+    user, is_created = User.objects.get_or_create(
+        slug=slug,
+        defaults=dict(
+            patreon_id=random_string(),
+            membership_platform_type=User.MEMBERSHIP_PLATFORM_PATREON,
+            email=slug + "@random.dev",
+            full_name="%s %d y.o. Developer" % (random.choice(["Максим", "Олег"]), random.randint(18, 101)),
+            company="Acme Corp.",
+            position=random.choice(["Подниматель пингвинов", "Опускатель серверов", "Коллектор пивных бутылок"]),
+            balance=10000,
+            membership_started_at=datetime.utcnow(),
+            membership_expires_at=datetime.utcnow() + timedelta(days=365 * 100),
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow(),
+            is_email_verified=True,
+            moderation_status=User.MODERATION_STATUS_INTRO,
+        ),
+    )
+
+    session = Session.create_for_user(user)
+
+    return set_session_cookie(redirect("profile", user.slug), user, session)
