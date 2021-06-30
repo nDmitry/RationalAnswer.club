@@ -1,9 +1,9 @@
-name: Deploy master to production
+name: Deploy main to production
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:

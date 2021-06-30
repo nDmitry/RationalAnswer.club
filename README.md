@@ -47,7 +47,7 @@ See [docs/test.md](docs/test.md) for more insights.
 
 ## 🚢 Deployment
 
-Automatic CI/CD pipelines are building and testing the app on each PR. They also deploy changes to production on merge to master (only a maintainer can do it).
+Automatic CI/CD pipelines are building and testing the app on each PR. They also deploy changes to production on merge to main (only a maintainer can do it).
 
 These pipelines are made as github-actions. Explore the [.github](.github) folder for more.
 
@@ -60,7 +60,7 @@ Contributions are welcome.
 
 The main point of interaction is the [Issues page](https://github.com/nDmitry/RationalAnswer.club/issues).
 
-Our CI/CD pipelines have to take all the dirty work. They build, test and deploy changes to production on every merge to master (only official maintainers can do it).
+Our CI/CD pipelines have to take all the dirty work. They build, test and deploy changes to production on every merge to main (only official maintainers can do it).
 
 We also run the public [Github Project Board](https://github.com/nDmitry/RationalAnswer.club/projects/1) to track progress and develop roadmaps.
 
