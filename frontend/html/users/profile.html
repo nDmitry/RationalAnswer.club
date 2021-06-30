@@ -108,7 +108,9 @@
                     {% endif %}
 
                     {% if me.id == user.id %}
-                        <a href="{% url "edit_post" intro.slug  %}" class="button post-edit-button profile-intro-edit">
+                        <a
+                            href="{% if user.is_club_member %}{% url "edit_post" intro.slug  %}{% else %}{% url "intro" %}{% endif %}"
+                            class="button post-edit-button profile-intro-edit">
                             <i class="fas fa-edit"></i>
                         </a>
                     {% endif %}
