@@ -33,7 +33,7 @@
                 {% if me.is_moderator %}
                     <i class="fas fa-tools"></i>&nbsp;<a href="{% url "admin_profile" user.slug %}">Админка</a>&nbsp;&nbsp;&nbsp;
                 {% endif %}
-                <i class="fas fa-cog"></i>&nbsp;<a href="{% url "profile_settings" user.slug %}">Настройки профиля</a>
+                <i class="fas fa-cog"></i>&nbsp;<a href="{% if user.is_club_member %}{% url "profile_settings" user.slug %}{% else %}{% url "intro" %}{% endif %}">Настройки профиля</a>
             </div>
         {% endif %}
 
