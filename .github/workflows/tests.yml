@@ -10,7 +10,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@master
       - uses: actions/setup-python@v2
         with:
           python-version: '3.8'
@@ -28,7 +28,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@master
       - name: Build image
         run: |
           docker-compose -f docker-compose.test.yml build
@@ -42,7 +42,7 @@ jobs:
         run: |
           docker-compose -f docker-compose.test.yml up -d webpack
       - name: Wait postgres
-        uses: jakejarvis/wait-action@main
+        uses: jakejarvis/wait-action@master
         with:
           time: '20s'
       - name: Run tests

@@ -6,11 +6,11 @@ jobs:
   dockerize:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@master
       - name: Build the docker-compose stack
         run: docker-compose up -d
       - name: Sleep
-        uses: jakejarvis/wait-action@main
+        uses: jakejarvis/wait-action@master
         with:
           time: '20s'
       - name: Check db migrate on container
