@@ -9,16 +9,18 @@
 {% endblock %}
 
 {% block og_tags %}
+    <meta name="description" content="Результаты поиска по запросу «{{ query }}»">
+
     <meta property="og:title" content="«{{ query }}» — {{ settings.APP_NAME }}">
     <meta property="og:site_name" content="{{ settings.APP_NAME }}">
     <meta property="og:url" content="{{ settings.APP_HOST }}">
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Результаты поиска">
+    <meta property="og:description" content="Результаты поиска по запросу «{{ query }}»">
     <meta property="og:image" content="{% static "images/share.png" %}">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="«{{ query }}» — {{ settings.APP_NAME }}">
-    <meta name="twitter:description" content="Результаты поиска">
+    <meta name="twitter:description" content="Результаты поиска по запросу «{{ query }}»">
     <meta name="twitter:image" content="{% static "images/share.png" %}">
 {% endblock %}
 

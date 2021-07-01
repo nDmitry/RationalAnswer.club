@@ -10,6 +10,8 @@
 {% endblock %}
 
 {% block og_tags %}
+    <meta name="description" content="{{ user.position }}{% if user.company %}, {{ user.company }}{% endif %}">
+
     <meta property="og:title" content="{{ user.full_name }} — {{ settings.APP_NAME }}">
     <meta property="og:site_name" content="{{ settings.APP_NAME }}">
     <meta property="og:url" content="{{ settings.APP_HOST }}">

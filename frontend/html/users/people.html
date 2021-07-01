@@ -12,16 +12,18 @@
 {% endblock %}
 
 {% block og_tags %}
+    <meta name="description" content="Поиск по участники Клуба и карта.">
+
     <meta property="og:title" content="Люди — {{ settings.APP_NAME }}">
     <meta property="og:site_name" content="{{ settings.APP_NAME }}">
     <meta property="og:url" content="{{ settings.APP_HOST }}">
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="">
+    <meta property="og:description" content="Поиск по участники Клуба и карта.">
     <meta property="og:image" content="{% static "images/share.png" %}">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Люди — {{ settings.APP_NAME }}">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:description" content="Поиск по участники Клуба и карта.">
     <meta name="twitter:image" content="{% static "images/share.png" %}">
 {% endblock %}
 

@@ -8,16 +8,18 @@
 {% endblock %}
 
 {% block og_tags %}
+    <meta name="description" content="Интро">
+
     <meta property="og:title" content="{{ post.prefix}}: {{ post.author.full_name | rutypography }} — {{ settings.APP_NAME }}">
     <meta property="og:site_name" content="{{ settings.APP_NAME }}">
     <meta property="og:url" content="{{ settings.APP_HOST }}">
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="">
+    <meta property="og:description" content="Интро">
     <meta property="og:image" content="{{ user.get_avatar }}">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ post.prefix}}: {{ post.author.full_name | rutypography }} — {{ settings.APP_NAME }}">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:description" content="Интро">
     <meta name="twitter:image" content="{{ user.get_avatar }}">
 
     <!-- Exclude intros from search engines -->
