@@ -31,7 +31,7 @@ class UserIntroForm(ModelForm):
     )
     avatar = ImageUploadField(
         label="Аватар или фото",
-        required=False,
+        required=True,
         resize=(512, 512),
         convert_to="jpg",
     )
