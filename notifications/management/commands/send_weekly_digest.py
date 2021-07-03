@@ -51,7 +51,7 @@ class Command(BaseCommand):
             slug=f"{year}_{week}",
             type=Post.TYPE_WEEKLY_DIGEST,
             defaults=dict(
-                author=User.objects.filter(slug="dima").first(),
+                author=User.objects.filter(slug="Dmitry").first(),
                 title=f"Клубный журнал. Итоги недели. Выпуск #{issue}",
                 html=no_footer_digest_html,
                 text=no_footer_digest_html,
