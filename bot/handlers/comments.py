@@ -53,7 +53,7 @@ def reply_to_comment(update: Update, context: CallbackContext) -> None:
     text = update.message.text or update.message.caption
     if not text:
         update.message.reply_text(
-            f"😣 Извините, я пока умею только текстовые реплаи"
+            f"😣 Извините, я пока умею только текстовые ответы"
         )
         return None
 
@@ -104,7 +104,7 @@ def comment_to_post(update: Update, context: CallbackContext) -> None:
     text = update.message.text or update.message.caption
     if not text:
         update.message.reply_text(
-            f"😣 Извините, я пока умею только текстовые реплаи"
+            f"😣 Извините, я пока умею только текстовые ответы"
         )
         return None
 

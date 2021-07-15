@@ -11,7 +11,7 @@ from users.models.user import User
 def command_whois(update: Update, context: CallbackContext) -> None:
     if not update.message or not update.message.reply_to_message:
         update.effective_chat.send_message(
-            "Эту команду нужно вызывать реплаем на сообщение человека, о котором вы хотите узнать",
+            "Эту команду нужно вызывать ответом на сообщение человека, о котором вы хотите узнать",
             quote=True
         )
         return None
