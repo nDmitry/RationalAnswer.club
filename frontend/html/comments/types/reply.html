@@ -59,9 +59,9 @@
         {% endif %}
 
         {% if me and me.is_club_member and comment.post.is_commentable %}
-        <span class="comment-reply-button" v-on:click="showReplyForm('{{ reply_to.id }}', '{{ comment.author.slug }}', true)">
+        <button type="button" class="comment-reply-button" v-on:click="showReplyForm('{{ reply_to.id }}', '{{ comment.author.slug }}', true)">
             <i class="fas fa-reply"></i>&nbsp;ответить
-        </span>
+        </button>
         {% endif %}
     </div>
     <div class="reply-replies thread-collapse-toggle">

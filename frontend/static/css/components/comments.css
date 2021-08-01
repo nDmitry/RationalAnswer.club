@@ -190,6 +190,11 @@
             color: var(--opposite-text-color);
         }
 
+        .comment-reply-button {
+            background: none;
+            border: none;
+        }
+
         .comment-footer i {
             font-size: 70%;
         }
