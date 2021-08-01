@@ -16,7 +16,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContex
     CallbackQueryHandler
 
 from bot.cache import cached_telegram_users
-from bot.handlers import moderation, comments, upvotes, auth, whois, fun, top
+from bot.handlers import moderation, auth, whois, fun, top
 
 log = logging.getLogger(__name__)
 
@@ -24,10 +24,7 @@ log = logging.getLogger(__name__)
 def command_help(update: Update, context: CallbackContext) -> None:
     update.effective_chat.send_message(
         "✖️ <b>Я — Ваш личный бот для клуба RationalAnswer</b>\n\n"
-        "Через меня можно отвечать на комментарии и посты — просто напишите "
-        "ответ на сообщение, и я отправлю его в Клуб. "
-        "Так можно общаться в комментариях, даже не открывая сайт.\n\n"
-        "Чтобы поставить плюс — ответьте +.\n\n"
+        "Через меня можно получать уведомления об ответах на свои посты и комментарии.\n\n"
         "Ещё я знаю несколько команд:\n\n"
         "/top - Топ событий в Клубе\n\n"
         "/random - Почитать случайный пост (неплохо убивает время)\n\n"
@@ -48,8 +45,7 @@ def private_message(update: Update, context: CallbackContext) -> None:
         )
     else:
         update.effective_chat.send_message(
-            "Привет! Полный список моих команд покажет /help,"
-            "а еще мне можно отвечать на посты и уведомления, всё это будет отправлено прямо в Клуб!",
+            "Привет! Полный список моих команд покажет /help.",
             parse_mode=ParseMode.HTML
         )
 
@@ -73,12 +69,6 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("random", fun.command_random))
     dispatcher.add_handler(CommandHandler("top", top.command_top))
     dispatcher.add_handler(CommandHandler("whois", whois.command_whois))
-    dispatcher.add_handler(
-        MessageHandler(Filters.reply & Filters.regex(r"^\+[+\d ]*$"), upvotes.upvote)
-    )
-    dispatcher.add_handler(
-        MessageHandler(Filters.reply & ~Filters.chat(int(settings.TELEGRAM_ADMIN_CHAT_ID)), comments.comment)
-    )
 
     # Only private chats
     dispatcher.add_handler(CommandHandler("start", auth.command_auth, Filters.private))

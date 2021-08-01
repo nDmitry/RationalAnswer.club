@@ -28,7 +28,7 @@ def command_whois(update: Update, context: CallbackContext) -> None:
 
     if from_user.is_bot:
         update.message.reply_text(
-            "Это бот, глупышка",
+            "Это просто бот",
             quote=True
         )
         return None
