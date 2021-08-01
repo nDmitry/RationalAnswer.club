@@ -5,16 +5,8 @@ from django.conf import settings
 from telegram import Update, ParseMode
 from telegram.ext import CallbackContext
 
-from common.flat_earth import parse_horoscope
 from notifications.telegram.common import render_html_message
 from posts.models.post import Post
-
-
-def command_horo(update: Update, context: CallbackContext) -> None:
-    horoscope = parse_horoscope()
-    update.effective_chat.send_message(
-        "Сегодня {club_day} день от сотворения Клуба, {phase_sign}\n\n{phase_description}".format(**horoscope)
-    )
 
 
 def command_random(update: Update, context: CallbackContext) -> None:

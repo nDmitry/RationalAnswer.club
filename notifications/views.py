@@ -15,7 +15,6 @@ from auth.helpers import auth_required
 from club.exceptions import AccessDenied
 
 from comments.models import Comment, CommentVote
-from common.flat_earth import parse_horoscope
 from common.request import ajax_request
 from landing.models import GodSettings
 from posts.models.post import Post
@@ -114,9 +113,6 @@ def daily_digest(request, user_slug):
     created_at_condition = dict(created_at__gte=start_date, created_at__lte=end_date)
     published_at_condition = dict(published_at__gte=start_date, published_at__lte=end_date)
 
-    # Moon
-    moon_phase = parse_horoscope()
-
     # New actions
     subscription_comments = Comment.visible_objects()\
         .filter(
@@ -201,7 +197,6 @@ def daily_digest(request, user_slug):
         "posts": posts,
         "mentions": mentions,
         "date": end_date,
-        "moon_phase": moon_phase,
     })
 
 

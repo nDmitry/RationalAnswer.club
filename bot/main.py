@@ -32,7 +32,6 @@ def command_help(update: Update, context: CallbackContext) -> None:
         "/top - Топ событий в Клубе\n\n"
         "/random - Почитать случайный пост (неплохо убивает время)\n\n"
         "/whois - Узнать профиль по телеграму\n\n"
-        "/horo - Клубный гороскоп\n\n"
         "/auth - Привязать бота к аккаунту в Клубе\n\n"
         "/help - Справка",
         parse_mode=ParseMode.HTML
@@ -71,7 +70,6 @@ def main() -> None:
 
     # Public + private chats
     dispatcher.add_handler(CommandHandler("help", command_help))
-    dispatcher.add_handler(CommandHandler("horo", fun.command_horo))
     dispatcher.add_handler(CommandHandler("random", fun.command_random))
     dispatcher.add_handler(CommandHandler("top", top.command_top))
     dispatcher.add_handler(CommandHandler("whois", whois.command_whois))

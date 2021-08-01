@@ -166,23 +166,6 @@
 
     <br>
 
-    {% if moon_phase %}
-        <h2>✨ Гороскоп в конце</h2>
-
-        <p class="editorial">
-            {% if moon_phase.club_day %}Сегодня {{ moon_phase.club_day }} день от сотворения Клуба{% endif %}{% if moon_phase.phase_num %} и {{ moon_phase.phase_num }}{% endif %}.
-            {% if moon_phase.phase_sign %}{{ moon_phase.phase_sign | capfirst }}.{% endif %}
-        </p>
-
-        {% if moon_phase.phase_description %}
-            <p class="editorial">
-                {{ moon_phase.phase_description }}
-            </p>
-        {% endif %}
-    {% endif %}
-
-    <br>
-
     <h2>Хорошего дня ❤️</h2>
 
     <br><br><br>
