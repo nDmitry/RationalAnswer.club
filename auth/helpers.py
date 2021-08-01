@@ -78,8 +78,10 @@ def check_user_permissions(request, **context):
         public_paths.extend(["/{}/".format(t) for t in dict(Post.TYPES).keys()]) # including intros
         public_paths.append("/label/")
 
-    is_public = request.path in public_pages or \
+    is_public = "/edit" not in request.path and (
+        request.path in public_pages or \
         len([p for p in public_paths if request.path.startswith(p)]) > 0
+    )
 
     if is_public:
         return None
