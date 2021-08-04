@@ -8483,7 +8483,8 @@ INSERT INTO "geo" ("id", "country_en", "region_en", "city_en", "country", "regio
 (8446, 'Zimbabwe', 'Midlands', 'Gweru', 'Зимбабве', 'Мидлендс', 'Гверу', '-19.468531', '29.8120795', 146073),
 (8447, 'Zimbabwe', 'Mashonaland West', 'Chinhoyi', 'Зимбабве', 'Западный Машоналенд', 'Чинхойи', '-17.3652664', '30.1935663', 61739),
 (8448, 'Zimbabwe', 'Bulawayo', 'Bulawayo', 'Зимбабве', 'Булавайо', 'Булавайо', '-20.1325066', '28.626479', 699385),
-(8449, 'Zimbabwe', 'Harare', 'Chitungwiza', 'Зимбабве', 'Восточный Машоналенд', 'Читунгвиза', '-18.0197815', '31.067907', 340360);
+(8449, 'Zimbabwe', 'Harare', 'Chitungwiza', 'Зимбабве', 'Восточный Машоналенд', 'Читунгвиза', '-18.0197815', '31.067907', 340360),
+(8450, 'Cyprus', 'Limassol', 'Limassol', 'Кипр', 'Лимасол', 'Лимассол', '34.7071301', '33.0226174', 154000);
         """),
         migrations.RunSQL("""
 update users set geo_id = (select id from geo where geo.country = users.country and (geo.city_en = users.city or geo.city = users.city) limit 1);
