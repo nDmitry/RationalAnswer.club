@@ -235,6 +235,7 @@ def weekly_digest(request):
 
     posts = Post.visible_objects()\
         .filter(**published_at_condition)\
+        .filter(upvotes__gte=settings.MIN_WEEKLY_DIGEST_UPVOTES)\
         .filter(Q(is_approved_by_moderator=True) | Q(upvotes__gte=settings.COMMUNITY_APPROVE_UPVOTES))\
         .filter(is_visible_in_feeds=True)\
         .exclude(type__in=[Post.TYPE_INTRO, Post.TYPE_WEEKLY_DIGEST])\
