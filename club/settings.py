@@ -156,12 +156,12 @@ CACHES = {
 # Email
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "email-smtp.eu-central-1.amazonaws.com"
-EMAIL_PORT = 587
+EMAIL_HOST = os.getenv("EMAIL_HOST", "email-smtp.eu-central-1.amazonaws.com")
+EMAIL_PORT = os.getenv("EMAIL_PORT", 587)
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "Клуб RationalAnswer <contact@rationalanswer.club>"
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "Клуб RationalAnswer <contact@rationalanswer.club>")
 
 # App
 
@@ -233,6 +233,7 @@ IMAGE_EXTENSIONS = {"jpg", "jpeg", "png", "gif"}
 
 OG_IMAGE_GENERATOR_URL = "https://i.rationalanswer.club/preview"
 OG_IMAGE_DEFAULT = "https://rationalanswer.club/static/images/share.png"
+OG_MACHINE_AUTHOR_LOGO = "https://rationalanswer.club/static/images/the_machine_logo.png"
 OG_IMAGE_GENERATOR_DEFAULTS = {
     "logo": "https://rationalanswer.club/static/images/logo/logo-white-text.png",
     "op": 0.6,

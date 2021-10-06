@@ -75,25 +75,22 @@
                 </div>
             </div>
         </div>
-        {% if linked_posts %}
-            {% include "posts/widgets/linked_posts.html" %}
-        {% endif %}
     </div>
 {% endblock %}
 
 {% block comments %}
     <div class="post-comments" id="comments">
+        {% battle_stats post comments %}
+
         {% if me %}
             <post-subscription
                 url="{% url "toggle_post_subscription" post.slug %}"
                 {% if subscription %}is-active-by-default{% endif %}
                 class="post-comments-subscription"
-                style="margin-left: 0;"
             >
+            подписка на аргументы
             </post-subscription>
         {% endif %}
-
-        {% battle_stats post comments %}
 
         {% if not post.comment_count and post.is_commentable and post.is_visible %}
             <div class="post-comments-title">
@@ -116,7 +113,7 @@
         {% endif %}
     </div>
 
-    <div class="battle-etiquette">
+    <div class="post-comments-rules">
         <strong>Этикет батлов:</strong>
         <ul>
             <li>Батл — это схватка двух крайностей. Мы пытаемся выделить аргументы каждой из сторон чтобы потом по ним составить свою картину мира. Рекомендуется избегать аргументов типа «каждый хорош для своего».</li>

@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load users %}
+{% load text_filters %}
+
+{% block title %}
+    Статистика — {{ block.super }}
+{% endblock %}
+
+{% block og_tags %}
+    <meta property="og:title" content="Статистика — {{ settings.APP_NAME }}">
+    <meta property="og:site_name" content="{{ settings.APP_NAME }}">
+    <meta property="og:url" content="{{ settings.APP_HOST }}">
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="">
+    <meta property="og:image" content="{% static "images/share.png" %}">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Статистика — {{ settings.APP_NAME }}">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="{% static "images/share.png" %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="stats">
+        <div class="stats-title">🏆<br>Статистика Клуба</div>
+
+        <div class="stats-description">
+            Наша экспериментальная страничка со статистикой.
+        </div>
+
+        <div class="block stats-top-users">
+            <div class="top-users">
+                {% for user in top_users|slice:"0:5" %}
+                    <a href="{% url "profile" user.slug %}" class="top-user top-user-big">
+                        <span class="top-user-avatar-badge">🏆</span>
+                        <span class="avatar top-user-avatar">
+                            <img src="{{ user.get_avatar }}" alt="Аватар {{ user.full_name }}" loading="lazy" />
+                        </span>
+                        <span class="top-user-name">#{{ forloop.counter }}: {{ user.full_name }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+
+            <div class="top-users">
+                {% for user in top_users|slice:"5:25" %}
+                    <a href="{% url "profile" user.slug %}" class="top-user top-user-medium">
+                        <span class="avatar top-user-avatar">
+                            <img src="{{ user.get_avatar }}" alt="Аватар {{ user.full_name }}" loading="lazy" />
+                        </span>
+                        <span class="top-user-name">#{{ forloop.counter|add:5 }}: {{ user.full_name }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+
+            <div class="top-users">
+                {% for user in top_users|slice:"25:64" %}
+                    <a href="{% url "profile" user.slug %}" class="top-user top-user-small">
+                        <span class="avatar top-user-avatar">
+                            <img src="{{ user.get_avatar }}" alt="Аватар {{ user.full_name }}" loading="lazy" />
+                        </span>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="stats-header">Ачивки</div>
+
+        <div class="stats-description">
+            Ачивки выдаются вручную модераторами.<br>
+            Чтобы получить ачивку — напишите на почту <strong><a href="mailto:moderator@rationalanswer.club">moderator@rationalanswer.club</a></strong> с пруфами и ссылками на аккаунты.
+            Для оффлайн-ачивок потребуется фото-подтверждение.
+        </div>
+
+        {% for achievement in achievements %}
+            <div class="stats-achievements">
+                <div class="stats-achievements-badge">
+                    <span class="user-achievement" {% if achievement.style %}style="{{ achievement.style }}"{% endif %}>
+                        <span class="user-achievement-wrapper">
+                            <img src="{{ achievement.image }}" class="user-badge-image" alt="{{ achievement.code }}">
+                            <span class="user-achievement-name">{{ achievement.name }}</span>
+                        </span>
+                        <span class="user-achievement-popup" {% if achievement.style %}style="{{ achievement.style }}"{% endif %}>{{ achievement.description }}</span>
+                    </span>
+                </div>
+                <div class="stats-achievements-users">
+                    {% for user in achievement.achievement_users|slice:":25" %}
+                        <a href="{% url "profile" user.slug %}" class="top-user top-user-medium">
+                            <span class="avatar top-user-avatar">
+                                <img src="{{ user.get_avatar }}" alt="Аватар {{ user.full_name }}" loading="lazy" />
+                            </span>
+                            <span class="top-user-name">{{ user.full_name }}</span>
+                        </a>
+                    {% endfor %}
+                    {% if achievement.user_count > 25 %}
+                       <span class="top-user-more">...и ещё {{ achievement.user_count|add:-25 }} {{ achievement.user_count|add:-25|rupluralize:"пользователь,пользователя,пользователей" }}</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="stats-header">Модераторы</div>
+
+        <div class="top-users">
+            {% for user in moderators %}
+                <a href="{% url "profile" user.slug %}" class="top-user top-user-medium">
+                    <span class="avatar top-user-avatar">
+                        <img src="{{ user.get_avatar }}" alt="Аватар {{ user.full_name }}" loading="lazy" />
+                    </span>
+                    <span class="top-user-name">{{ user.full_name }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
