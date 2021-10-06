@@ -30,9 +30,9 @@ def stats(request):
     top_users = User.objects\
         .filter(
             moderation_status=User.MODERATION_STATUS_APPROVED,
-            membership_expires_at__gte=datetime.utcnow() + timedelta(days=70)
+            upvotes__gt=0
         )\
-        .order_by("-membership_expires_at")[:64]
+        .order_by("-upvotes")[:64]
 
     return render(request, "pages/stats.html", {
         "achievements": achievements,
