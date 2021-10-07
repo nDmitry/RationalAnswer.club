@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django_q.tasks import async_task
 
 from notifications.telegram.common import ADMIN_CHAT, send_telegram_message, render_html_message, CLUB_ONLINE, Chat
+from notifications.telegram.posts import announce_in_club_channel
 from common.regexp import USERNAME_RE
 from posts.models.post import Post
 from users.models.friends import Friend
@@ -63,6 +64,8 @@ def async_create_or_update_post(post, is_created):
         parse_mode=telegram.ParseMode.HTML,
         disable_preview=True,
     )
+
+    announce_in_club_channel(post=post)
 
     # only for newly created posts
     if post.is_visible and (is_created or "is_visible" in post.changed_fields):
