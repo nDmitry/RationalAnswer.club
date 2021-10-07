@@ -87,7 +87,7 @@ def check_user_permissions(request, **context):
         return None
 
     if not request.me:
-        return render(request, "auth/access_denied.html", context)
+        return render(request, "auth/access_denied.html", context, status=403)
 
     if request.me.membership_expires_at < datetime.utcnow():
         log.info("User membership expired. Redirecting to payments page...")
