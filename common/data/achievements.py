@@ -15,7 +15,7 @@ ACHIEVEMENTS = [
         "name": "Добытчик Золота",
         "description": "Нашел и запостил много крутых ссылок, которые не раз попадали в топы недели",
         "image": "https://i.rationalanswer.club/a08e5cd515b943de4fa0941cda13684e1f8814385590434b187e427af687b463.png",
-        "style": "background-color: #FABE0F;",
+        "style": "background-color: #FFD700;",
     }),
     ("knowledge", {
         "name": "Хранитель знаний",
@@ -46,7 +46,7 @@ ACHIEVEMENTS = [
         "name": "За успешный FIRE",
         "description": "Медаль за достижение финансовой независимости и выход на раннюю пенсию",
         "image": "https://i.rationalanswer.club/552f9e8bde3b55de724eca735d51708c4fdc5b7873032f5ca9d9401bbe8c3941.png",
-        "style": "background-color: #FFFDDF; font-size: 120%;",
+        "style": "background-color: #FFB02E; font-size: 120%;",
     }),
 ]
 
