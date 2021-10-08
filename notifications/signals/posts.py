@@ -65,7 +65,8 @@ def async_create_or_update_post(post, is_created):
         disable_preview=True,
     )
 
-    announce_in_club_channel(post=post)
+    if post.type != Post.TYPE_INTRO:
+        announce_in_club_channel(post=post)
 
     # only for newly created posts
     if post.is_visible and (is_created or "is_visible" in post.changed_fields):
