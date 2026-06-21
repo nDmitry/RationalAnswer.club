@@ -80,12 +80,9 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("auth", auth.command_auth, Filters.private))
     dispatcher.add_handler(MessageHandler(Filters.private, private_message))
 
-    # Start the bot
-    updater.start_polling(
-        # polling is more reliable behind NAT/firewall;
-        # webhook requires inbound connectivity from Telegram which is blocked in some countries
-        drop_pending_updates=True,
-    )
+    # Start the bot. Polling is more reliable behind NAT/firewall;
+    # webhook requires inbound connectivity from Telegram which is blocked in some countries.
+    updater.start_polling()
 
     # Wait all threads
     updater.idle()
