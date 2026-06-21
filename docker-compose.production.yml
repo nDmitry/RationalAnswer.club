@@ -23,6 +23,7 @@ services:
       - EMAIL_HOST
       - EMAIL_PORT
       - DEFAULT_FROM_EMAIL
+      - TELEGRAM_PROXY_URL=socks5://172.19.0.1:9050
     restart: always
     volumes:
       - ./frontend/static:/app/frontend/static

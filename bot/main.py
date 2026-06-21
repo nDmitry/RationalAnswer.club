@@ -81,17 +81,11 @@ def main() -> None:
     dispatcher.add_handler(MessageHandler(Filters.private, private_message))
 
     # Start the bot
-    if settings.DEBUG:
-        updater.start_polling()
-        # ^ polling is useful for development since you don't need to expose endpoints
-    else:
-        updater.start_webhook(
-            listen=settings.TELEGRAM_BOT_WEBHOOK_HOST,
-            port=settings.TELEGRAM_BOT_WEBHOOK_PORT,
-            url_path=settings.TELEGRAM_TOKEN,
-        )
-        log.info(f"Set webhook: {settings.TELEGRAM_BOT_WEBHOOK_URL + settings.TELEGRAM_TOKEN}")
-        updater.bot.set_webhook(settings.TELEGRAM_BOT_WEBHOOK_URL + settings.TELEGRAM_TOKEN)
+    updater.start_polling(
+        # polling is more reliable behind NAT/firewall;
+        # webhook requires inbound connectivity from Telegram which is blocked in some countries
+        drop_pending_updates=True,
+    )
 
     # Wait all threads
     updater.idle()
