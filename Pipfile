@@ -22,7 +22,6 @@ click = "*"
 pillow = ">=7.1.1"
 django-simple-history = ">=2.8.0"
 python-telegram-bot = "==12.5.1"
-PySocks = "*"
 django-q = {version = ">=1.3.5", extras = ["sentry"]}
 redis = ">=3.4.1"
 python-dotenv = ">=0.12"
@@ -39,6 +38,7 @@ stripe = "==2.55.0"
 icalendar = "*"
 httptools = "*"
 croniter = "*"
+pysocks = "*"
 
 [requires]
 python_version = "3.8"

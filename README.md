@@ -33,6 +33,22 @@ The first time you start it up, you'll probably need a test account to get right
 
 Auto-reloading for backend and frontend is performed automatically on every code change. If everything is broken and not working (it happens), you can always rebuild the world from scratch using `docker-compose up --build`.
 
+For install old Python 3.8 locally use:
+
+```sh
+$ brew install pyenv
+$ pyenv install 3.8.18
+$ pyenv local 3.8.18
+$ env PATH=(pyenv root)/versions/3.8.18/bin:$PATH python3 -m venv venv
+```
+
+To clean up:
+
+```sh
+$ rm .python-version
+$ pyenv uninstall 3.8.18
+```
+
 ## 🧑‍💻 Advanced setup for devs
 
 For more information on how to test the telegram bot, run project without docker and other useful notes, read [docs/setup.md](docs/setup.md).
