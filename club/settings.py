@@ -277,7 +277,6 @@ CLEARED_POST_TEXT = "```\n" \
     "😥 Этот пост был удален самим автором и от него остались лишь комментарии участников. " \
     "Если вы хотите приютить и развить эту тему как новый автор, напишите модераторам Клуба: moderator@rationalanswer.club." \
     "\n```"
-)
 
 MODERATOR_USERNAME = "moderator"
 DELETED_USERNAME = "deleted"
