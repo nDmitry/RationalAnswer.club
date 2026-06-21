@@ -15,7 +15,7 @@ Once you decided to code something in the project you'll need to setup your envi
 #### locally
   Easies way is to run postgres is to run in docker, just run it with follow command:
   ```sh
-  $ docker-compose -f docker-compose.yml up -d postgres
+  $ docker compose -f docker-compose.yml up -d postgres
   ```
   When you need to connect to postgres use next params:
   ```dotenv
@@ -63,7 +63,7 @@ $ npm run watch # will implicitly run `npm ci`
 After you have setup postgres, venv and build frontend (look this steps above) complete preparations with follow commands:
 ```sh
 # run redis
-$ docker-compose -f docker-compose.yml up redis
+$ docker compose -f docker-compose.yml up redis
 
 # run queue
 $ pipenv run python manage.py qcluster
@@ -82,7 +82,7 @@ To run telegram bot you have to:
   2. Fill all the requirement fields in `./club/env`, such as `TELEGRAM_TOKEN` etc.
       - `TELEGRAM_TOKEN` you can get from [@BotFather](https://t.me/BotFather)
       - To get `TELEGRAM_CLUB_CHANNEL_URL`, `TELEGRAM_ADMIN_CHAT_ID` etc Just Simply Forward a message from your group/channel to [@JsonDumpBot](https://t.me/JsonDumpBot) or [@getidsbot](https://t.me/getidsbot)
-  3. Rebuild application: `docker-compose up --build`
+  3. Rebuild application: `docker compose up --build`
 
 ## Docker-compose
 

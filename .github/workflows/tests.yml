@@ -31,20 +31,20 @@ jobs:
       - uses: actions/checkout@master
       - name: Build image
         run: |
-          docker-compose -f docker-compose.test.yml build
+          docker compose -f docker-compose.test.yml build
       - name: Run postgres
         run: |
-          docker-compose -f docker-compose.test.yml up -d postgres
+          docker compose -f docker-compose.test.yml up -d postgres
       - name: Run redis
         run: |
-          docker-compose -f docker-compose.test.yml up -d redis
+          docker compose -f docker-compose.test.yml up -d redis
       - name: Run frontend
         run: |
-          docker-compose -f docker-compose.test.yml up -d webpack
+          docker compose -f docker-compose.test.yml up -d webpack
       - name: Wait postgres
         uses: jakejarvis/wait-action@master
         with:
           time: '20s'
       - name: Run tests
         run: |
-          docker-compose -f docker-compose.test.yml run --rm tests
+          docker compose -f docker-compose.test.yml run --rm tests
